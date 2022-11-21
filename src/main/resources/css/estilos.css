@@ -1,0 +1,41 @@
+.boton
+{
+    -fx-background-color:  #00FDAD
+}
+
+.boton:hover{
+
+    -fx-background-color: #A6FDE1
+
+}
+
+.boton:pressed{
+
+-fx-background-color: #438E76
+}
+
+.boton:focused{
+
+-fx-background-color: #438E76;
+-fx-border-color:#ffff;
+-fx-border-width: 0px 0px 0px 3px;
+
+}
+
+
+
+.column-header{
+
+-fx-background-color:  #30F7B8
+
+}
+
+.textPrompt {
+-fx-prompt-text-fill:#4C615E;
+
+}
+
+.texto{
+
+ -fx-alignment: center ;
+}

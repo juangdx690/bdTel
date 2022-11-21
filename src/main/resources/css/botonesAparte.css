@@ -1,0 +1,42 @@
+.button{
+
+        -fx-padding: 4 4 4 4;
+        -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+        -fx-background-radius: 8;
+        -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+        -fx-font-weight: bold;
+        -fx-font-size: 1.1em;
+        -fx-background-color:  #00FDAD;
+        -fx-text-fill: white;
+    }
+
+    .button:hover{
+        -fx-padding: 4 4 4 4;
+        -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+        -fx-background-radius: 8;
+        -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+        -fx-font-weight: bold;
+        -fx-font-size: 1.1em;
+        -fx-text-fill: white;
+        -fx-background-color: #A6FDE1;
+
+    }
+
+    .button:pressed{
+
+        -fx-padding: 4 4 4 4;
+        -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+        -fx-background-radius: 8;
+        -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+        -fx-font-weight: bold;
+        -fx-font-size: 1.1em;
+        -fx-text-fill: white;
+        -fx-background-color: #438E76;
+    }
+
+.labels {
+
+-fx-font-weight:bold;
+-fx-font-family: "Verdana";
+
+}

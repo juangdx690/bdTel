@@ -1,0 +1,12 @@
+.label
+{
+    -fx-background-color:  #ffff;
+    -fx-text-fill: #c7c0c0;
+}
+
+.label:hover{
+
+    -fx-background-color: #FF0000;
+    -fx-text-fill: #ffff;
+}
+
