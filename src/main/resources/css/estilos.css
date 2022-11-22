@@ -14,7 +14,7 @@
 -fx-background-color: #438E76
 }
 
-.boton:focused{
+.botonSel{
 
 -fx-background-color: #438E76;
 -fx-border-color:#ffff;

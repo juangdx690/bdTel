@@ -185,6 +185,9 @@ public class Controlador {
 
     }
 
+
+
+
     private void cargarDatosComboBox() {
 
         datos2 = marcasDAO.obtenerMarcas();

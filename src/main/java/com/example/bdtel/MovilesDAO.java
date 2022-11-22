@@ -104,6 +104,7 @@ public class MovilesDAO {
 
     }
 
+
     public Boolean anadirMovil(Moviles moviles) {
         int registrosAfectadosConsulta = 0;
         boolean comprobacion;
@@ -132,10 +133,7 @@ public class MovilesDAO {
             st.setInt(7, moviles.getBateria());
             st.setDouble(8, moviles.getPrecioSalida());
             st.setDouble(9, moviles.getPrecio());
-
-
-
-            st.setDate(10,Date.valueOf(moviles.getDate()));
+            st.setDate(10, Date.valueOf(moviles.getDate()));
 
             registrosAfectadosConsulta = st.executeUpdate();
             st.close();
@@ -158,5 +156,59 @@ public class MovilesDAO {
     }
 
 
+    public Boolean actualizarMovil(Moviles moviles) {
+        boolean comp;
+        try {
+            conexion = DriverManager.getConnection(servidor, usuario, passwd);
+            String SQL = "UPDATE telefonos "
+                    + "SET "
+                    + " Modelo = ? ,"
+                    + " Marca = ? ,"
+                    + " Almacenamiento = ? ,"
+                    + " RAM = ? ,"
+                    + " Sistemaoperativo = ? , "
+                    + " Procesador = ? ,"
+                    + " Bateria = ? ,"
+                    + " Preciosalida = ? ,"
+                    + " Precioactual = ? ,"
+                    + " Fechalanzamiento = ? "
+                    + " WHERE ID = ?";
+
+            PreparedStatement st = conexion.prepareStatement(SQL);
+
+            st.setString(1, moviles.getModelo());
+            st.setString(2, moviles.getMarca());
+            st.setInt(3, moviles.getAlmacenamiento());
+            st.setInt(4, moviles.getRam());
+            st.setString(5, moviles.getSistemaOperativo());
+            st.setString(6, moviles.getCpu());
+            st.setInt(7, moviles.getBateria());
+            st.setDouble(8, moviles.getPrecioSalida());
+            st.setDouble(9, moviles.getPrecio());
+            st.setDate(10, Date.valueOf(moviles.getDate()));
+
+            st.setInt(11, moviles.getId());
+
+            int registros = st.executeUpdate();
+
+            st.close();
+
+            conexion.close();
+
+            if (registros == 1) {
+                comp = true;
+            } else {
+
+                comp = false;
+
+            }
+
+        } catch (SQLException e) {
+            comp = false;
+            System.out.println(e.toString());
+        }
+
+        return comp;
+    }
 
 }
