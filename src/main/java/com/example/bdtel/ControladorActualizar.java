@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -13,11 +14,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.converter.LocalDateStringConverter;
 import javafx.util.converter.NumberStringConverter;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -98,6 +101,12 @@ public class ControladorActualizar {
     private ObservableList<String> datos2String;
 
     private int x = 0, y = 0;
+    @javafx.fxml.FXML
+    private Label lblImg;
+    @javafx.fxml.FXML
+    private CheckBox chbImg;
+    @javafx.fxml.FXML
+    private TextField rutaImg;
 
     public void initialize() {
 
@@ -112,8 +121,10 @@ public class ControladorActualizar {
 
     }
 
+
+
     public void recogerDatos(int id, String modelo, String marca, int almacenamiento, int ram,
-    String sistemaOperativo, String cpu, int bateria, double precioSalida, double precio, String fecha){
+                             String sistemaOperativo, String cpu, int bateria, double precioSalida, double precio, String fecha) {
 
         movilesAUX.setId(id);
         movilesAUX.setModelo(modelo);
@@ -126,13 +137,13 @@ public class ControladorActualizar {
         movilesAUX.setPrecioSalida(precioSalida);
         movilesAUX.setPrecio(precio);
         movilesAUX.setDate(LocalDate.parse(fecha));
-        String texto = txtTitulo.getText()+" "+modelo;
+        String texto = txtTitulo.getText() + " " + modelo;
 
         txtTitulo.setText(texto);
 
 
-
     }
+
     private void cargarDatosComboBox() {
 
         datos2 = marcasDAO.obtenerMarcas();
@@ -149,7 +160,6 @@ public class ControladorActualizar {
 
 
     }
-
 
 
     public void realizarBindingsMoviles(Moviles moviles) {
@@ -239,9 +249,6 @@ public class ControladorActualizar {
     }
 
 
-
-
-
     public void formatoFecha() {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -249,26 +256,41 @@ public class ControladorActualizar {
 
     }
 
+    @Deprecated
+    public void buscarRutaImg(ActionEvent actionEvent) {
 
+        final FileChooser fileChooser = new FileChooser();
+
+        File archivo =  fileChooser.showOpenDialog(null);
+
+        Stage stage = (Stage) listaMarcaAct.getScene().getWindow();
+
+
+        if (archivo != null){
+
+            rutaImg.setText(archivo.getAbsolutePath());
+
+        }
+
+    }
 
     @javafx.fxml.FXML
     public void onActualizarClicked(ActionEvent actionEvent) {
 
 
-        if (movilesDAO.actualizarMovil(movilesAUX)){
+        if (chbImg.isSelected()){
 
-            System.out.println("actualizado");
+            System.out.println("aaa");
+            movilesDAO.actualizarMovilConRuta(movilesAUX, rutaImg.getText());
 
         }else{
 
-            System.out.println("no actualizado");
+            movilesDAO.actualizarMovil(movilesAUX);
 
         }
 
 
     }
-
-
 
 
     @javafx.fxml.FXML

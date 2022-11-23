@@ -6,7 +6,7 @@
         -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
         -fx-font-weight: bold;
         -fx-font-size: 1.1em;
-        -fx-background-color:  #00FDAD;
+        -fx-background-color:  #003B84;
         -fx-text-fill: white;
     }
 
@@ -18,7 +18,7 @@
         -fx-font-weight: bold;
         -fx-font-size: 1.1em;
         -fx-text-fill: white;
-        -fx-background-color: #A6FDE1;
+        -fx-background-color: #175AAC;
 
     }
 
@@ -31,7 +31,7 @@
         -fx-font-weight: bold;
         -fx-font-size: 1.1em;
         -fx-text-fill: white;
-        -fx-background-color: #438E76;
+        -fx-background-color: #4D82C3;
     }
 
 .labels {

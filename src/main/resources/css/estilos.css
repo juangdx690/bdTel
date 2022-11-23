@@ -1,34 +1,35 @@
 .boton
 {
-    -fx-background-color:  #00FDAD
+    -fx-background-color:   #013E88
 }
 
 .boton:hover{
 
-    -fx-background-color: #A6FDE1
+    -fx-background-color: #0057C0
 
 }
 
 .boton:pressed{
 
--fx-background-color: #438E76
+-fx-background-color: #0154BA
 }
 
 .botonSel{
 
--fx-background-color: #438E76;
+-fx-background-color: #1965C0;
 -fx-border-color:#ffff;
 -fx-border-width: 0px 0px 0px 3px;
 
 }
 
 
-
+/*
 .column-header{
 
--fx-background-color:  #30F7B8
+-fx-background-color:  #013E88;
+-fx-text-fill:#4C615E;
 
-}
+}*/
 
 .textPrompt {
 -fx-prompt-text-fill:#4C615E;
@@ -39,3 +40,4 @@
 
  -fx-alignment: center ;
 }
+

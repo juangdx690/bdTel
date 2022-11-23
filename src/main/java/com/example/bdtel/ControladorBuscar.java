@@ -78,10 +78,19 @@ public class ControladorBuscar {
     private ObservableList<String> datos2String;
 
     private int x = 0, y = 0;
+    @javafx.fxml.FXML
+    private TextField txtmod;
+    @javafx.fxml.FXML
+    private TextField txtfechasal;
+    @javafx.fxml.FXML
+    private Pane paneltitulo;
+    @javafx.fxml.FXML
+    private AnchorPane contenedor;
 
     public void initialize() {
 
         cargarDatosTabla();
+        cargarGestorDobleCLick();
 
     }
 
@@ -143,6 +152,60 @@ public class ControladorBuscar {
             Moviles m = (Moviles) tablaBusqueda.getSelectionModel().getSelectedItem();
 
 
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("actualizar.fxml"));
+
+            try {
+                Parent root = loader.load();
+
+                ControladorActualizar controladorAct = loader.getController();
+
+                controladorAct.recogerDatos(m.getId(), m.getModelo(), m.getMarca(), m.getAlmacenamiento(), m.getRam(),
+                        m.getSistemaOperativo(), m.getCpu(), m.getBateria(), m.getPrecioSalida(), m.getPrecio(),
+                        m.getFecha());
+
+                Scene scene = new Scene(root, 1400, 700);
+
+                Stage stage = new Stage();
+
+                stage.setScene(scene);
+
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
+
+                Stage stagePrin = (Stage) this.txtTitulo.getScene().getWindow();
+
+                stagePrin.close();
+
+                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+
+                        x = (int) mouseEvent.getSceneX();
+                        y = (int) mouseEvent.getSceneY();
+
+                    }
+                });
+
+                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        stage.setX(mouseEvent.getScreenX() - x);
+                        stage.setY(mouseEvent.getScreenY() - y);
+                    }
+                });
+
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+        }
+
+        if (event.getSource() == btnPagBorrar) {
+
+            Moviles m = (Moviles) tablaBusqueda.getSelectionModel().getSelectedItem();
+
             Alert alert;
 
             if (Objects.isNull(m)) {
@@ -150,42 +213,98 @@ public class ControladorBuscar {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
                 alert.setTitle("Error");
-                alert.setContentText("Tienes que seleccionar una id");
+                alert.setContentText("Tienes que seleccionar una fila de la tabla.");
                 alert.showAndWait();
+
             } else {
 
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setHeaderText(null);
-                alert.setTitle("Actualización del producto");
-                alert.setContentText("¿Estas seguro de que quieres actualizar los datos del movil: " + m.getModelo() + " ?");
+                alert.setTitle("Confirmación");
+                alert.setContentText("¿Estas seguro de que quieres borrar el móvil: " + m.getModelo() + " ?");
                 Optional<ButtonType> action = alert.showAndWait();
-
                 if (action.get() == ButtonType.OK) {
 
 
-                    FXMLLoader loader = new FXMLLoader(Main.class.getResource("actualizar.fxml"));
+                    borrarMovil(m);
+
+                    cargarDatosTabla();
+
+                }
+
+            }
+
+
+        }
+
+    }
+
+
+    @Deprecated
+    public void cargarDatosTablaMarca(ActionEvent event) {
+
+        datos = movilesDAO.obtenerMovilesconMarca(txtSearch.getText(), txtmod.getText(), txtfechasal.getText());
+        colID.setCellValueFactory(new PropertyValueFactory<Moviles, String>("id"));
+        colModelo.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Modelo"));
+        colMarca.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Marca"));
+        colAlmacenamiento.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Almacenamiento"));
+        colRAM.setCellValueFactory(new PropertyValueFactory<Moviles, String>("ram"));
+        colSO.setCellValueFactory(new PropertyValueFactory<Moviles, String>("sistemaOperativo"));
+        colCPU.setCellValueFactory(new PropertyValueFactory<Moviles, String>("cpu"));
+        colBateria.setCellValueFactory(new PropertyValueFactory<Moviles, String>("bateria"));
+        colPrecioS.setCellValueFactory(new PropertyValueFactory<Moviles, String>("precioSalida"));
+        colPrecioA.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Precio"));
+        colFecha.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Fecha"));
+
+        tablaBusqueda.setItems(datos);
+
+    }
+
+    @javafx.fxml.FXML
+    public void desTabla(){
+
+        tablaBusqueda.getSelectionModel().select(null);
+
+
+
+    }
+
+    private void cargarGestorDobleCLick() {
+        tablaBusqueda.setRowFactory(tv -> {
+            TableRow<Moviles> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+
+                    Moviles m = (Moviles) tablaBusqueda.getSelectionModel().getSelectedItem();
+
+                    FXMLLoader loader = new FXMLLoader(Main.class.getResource("verMovil.fxml"));
 
                     try {
                         Parent root = loader.load();
 
-                        ControladorActualizar controladorAct = loader.getController();
+                        ControladorVerMoviles controladorVM = loader.getController();
 
-                        controladorAct.recogerDatos(m.getId(), m.getModelo(), m.getMarca(), m.getAlmacenamiento(), m.getRam(),
-                                m.getSistemaOperativo(), m.getCpu(), m.getBateria(), m.getPrecioSalida(), m.getPrecio(),
-                                m.getFecha());
 
-                        Scene scene = new Scene(root, 1400, 700);
+
+
+                            System.out.println("si");
+                            controladorVM.cargarDatos(m, movilesDAO.obtenerImagen(m.getId()));
+
+
+
+
+                        Scene scene = new Scene(root, 698, 575);
 
                         Stage stage = new Stage();
 
                         stage.setScene(scene);
 
+                        Stage stagePrin = (Stage) this.txtTitulo.getScene().getWindow();
                         stage.initStyle(StageStyle.UNDECORATED);
                         stage.show();
 
-                        Stage stagePrin = (Stage) this.txtTitulo.getScene().getWindow();
 
-                        stagePrin.close();
+
 
                         scene.setOnMousePressed(new EventHandler<MouseEvent>() {
                             @Override
@@ -210,34 +329,10 @@ public class ControladorBuscar {
                         throw new RuntimeException(e);
                     }
 
-
                 }
-            }
-
-
-        }
-
-
-    }
-
-    @javafx.fxml.FXML
-    public void cargarDatosTablaMarca(ActionEvent event) {
-
-        datos = movilesDAO.obtenerMovilesconMarca(txtSearch.getText());
-        colID.setCellValueFactory(new PropertyValueFactory<Moviles, String>("id"));
-        colModelo.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Modelo"));
-        colMarca.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Marca"));
-        colAlmacenamiento.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Almacenamiento"));
-        colRAM.setCellValueFactory(new PropertyValueFactory<Moviles, String>("ram"));
-        colSO.setCellValueFactory(new PropertyValueFactory<Moviles, String>("sistemaOperativo"));
-        colCPU.setCellValueFactory(new PropertyValueFactory<Moviles, String>("cpu"));
-        colBateria.setCellValueFactory(new PropertyValueFactory<Moviles, String>("bateria"));
-        colPrecioS.setCellValueFactory(new PropertyValueFactory<Moviles, String>("precioSalida"));
-        colPrecioA.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Precio"));
-        colFecha.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Fecha"));
-
-        tablaBusqueda.setItems(datos);
-
+            });
+            return row;
+        });
     }
 
     @javafx.fxml.FXML
@@ -247,6 +342,13 @@ public class ControladorBuscar {
 
     }
 
+
+    private void borrarMovil(Moviles movil) {
+
+        movilesDAO.borrarProducto(movil);
+
+
+    }
 
     private void cargarDatosTabla() {
         datos = movilesDAO.obtenerMoviles();

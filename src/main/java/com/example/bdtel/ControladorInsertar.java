@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -13,11 +14,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.converter.LocalDateStringConverter;
 import javafx.util.converter.NumberStringConverter;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -99,6 +103,12 @@ public class ControladorInsertar {
 
     private int x = 0;
     private int y = 0;
+    @javafx.fxml.FXML
+    private Label lblImgAct;
+    @javafx.fxml.FXML
+    private TextField txtRutaFichero;
+    @javafx.fxml.FXML
+    private Button btnBuscarImg;
 
     public void initialize() {
 
@@ -109,6 +119,7 @@ public class ControladorInsertar {
         realizarBindingsMoviles(movilesAUX);
         formatoFecha();
 
+        quitar0campos();
     }
 
     private void cargarDatosComboBox() {
@@ -124,6 +135,16 @@ public class ControladorInsertar {
             System.out.println(datos2.get(i).getMarca());
             i++;
         }
+    }
+
+    public void quitar0campos() {
+
+        if (txtAlmacenamientoAct.getText() == "0") {
+
+            txtAlmacenamientoAct.setText("");
+
+        }
+
     }
 
     @javafx.fxml.FXML
@@ -202,11 +223,13 @@ public class ControladorInsertar {
 
 
     }
+
     @javafx.fxml.FXML
     public void onAltaClicked(ActionEvent actionEvent) {
 
-        movilesDAO.anadirMovil(movilesAUX);
 
+
+        movilesDAO.anadirMovil(movilesAUX, txtRutaFichero.getText());
 
 
     }
@@ -226,5 +249,71 @@ public class ControladorInsertar {
 
     }
 
+    @javafx.fxml.FXML
+    public void cerrarInsertar(Event event) {
 
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("buscar.fxml"));
+
+        try {
+            Parent root = loader.load();
+
+            ControladorBuscar controladorBus = loader.getController();
+
+            Scene scene = new Scene(root, 1400, 700);
+
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+
+            Stage stagePrin = (Stage) this.txtTitulo.getScene().getWindow();
+
+            stagePrin.close();
+
+            scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+
+                    x = (int) mouseEvent.getSceneX();
+                    y = (int) mouseEvent.getSceneY();
+
+                }
+            });
+
+            scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    stage.setX(mouseEvent.getScreenX() - x);
+                    stage.setY(mouseEvent.getScreenY() - y);
+                }
+            });
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    @FXML
+    public void buscarRutaImg(ActionEvent actionEvent) {
+
+        final FileChooser fileChooser = new FileChooser();
+
+        File archivo =  fileChooser.showOpenDialog(null);
+
+        Stage stage = (Stage) listaMarcaAct.getScene().getWindow();
+
+
+        if (archivo != null){
+
+            txtRutaFichero.setText(archivo.getAbsolutePath());
+
+        }
+
+    }
 }

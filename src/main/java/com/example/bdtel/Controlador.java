@@ -280,32 +280,9 @@ public class Controlador {
 
     }
 
-    public void cargarDatosTablaMarca(ActionEvent event) {
 
-        datos = movilesDAO.obtenerMovilesconMarca(txtSearch.getText());
-        colID.setCellValueFactory(new PropertyValueFactory<Moviles, String>("id"));
-        colModelo.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Modelo"));
-        colMarca.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Marca"));
-        colAlmacenamiento.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Almacenamiento"));
-        colRAM.setCellValueFactory(new PropertyValueFactory<Moviles, String>("ram"));
-        colSO.setCellValueFactory(new PropertyValueFactory<Moviles, String>("sistemaOperativo"));
-        colCPU.setCellValueFactory(new PropertyValueFactory<Moviles, String>("cpu"));
-        colBateria.setCellValueFactory(new PropertyValueFactory<Moviles, String>("bateria"));
-        colPrecioS.setCellValueFactory(new PropertyValueFactory<Moviles, String>("precioSalida"));
-        colPrecioA.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Precio"));
-        colFecha.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Fecha"));
 
-        tablaBusqueda.setItems(datos);
 
-    }
-
-    @javafx.fxml.FXML
-    public void onAltaClicked(ActionEvent actionEvent) {
-        movilesDAO.anadirMovil(movilesAUX);
-
-        cargarDatosTabla();
-
-    }
 
     public void formatoFecha() {
 
