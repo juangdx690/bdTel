@@ -1,6 +1,7 @@
 package com.example.bdtel;
 
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -19,8 +20,11 @@ import javafx.util.converter.LocalDateStringConverter;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class ControladorBuscar {
     @javafx.fxml.FXML
@@ -86,13 +90,38 @@ public class ControladorBuscar {
     private Pane paneltitulo;
     @javafx.fxml.FXML
     private AnchorPane contenedor;
+    @javafx.fxml.FXML
+    private Label pestanaMarca;
+
+    private Executor exec;
 
     public void initialize() {
 
-        cargarDatosTabla();
+
         cargarGestorDobleCLick();
 
+        exec = Executors.newCachedThreadPool((runnable) -> {
+            Thread t = new Thread(runnable);
+            t.setDaemon(true);
+            return t;
+        });
+
+        cargarDatosTabla();
+
+        colID.setCellValueFactory(new PropertyValueFactory<Moviles, String>("id"));
+        colModelo.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Modelo"));
+        colMarca.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Marca"));
+        colAlmacenamiento.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Almacenamiento"));
+        colRAM.setCellValueFactory(new PropertyValueFactory<Moviles, String>("ram"));
+        colSO.setCellValueFactory(new PropertyValueFactory<Moviles, String>("sistemaOperativo"));
+        colCPU.setCellValueFactory(new PropertyValueFactory<Moviles, String>("cpu"));
+        colBateria.setCellValueFactory(new PropertyValueFactory<Moviles, String>("bateria"));
+        colPrecioS.setCellValueFactory(new PropertyValueFactory<Moviles, String>("precioSalida"));
+        colPrecioA.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Precio"));
+        colFecha.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Fecha"));
+
     }
+
 
     @javafx.fxml.FXML
     public void pestanaClicks(ActionEvent event) {
@@ -243,28 +272,23 @@ public class ControladorBuscar {
     @Deprecated
     public void cargarDatosTablaMarca(ActionEvent event) {
 
-        datos = movilesDAO.obtenerMovilesconMarca(txtSearch.getText(), txtmod.getText(), txtfechasal.getText());
-        colID.setCellValueFactory(new PropertyValueFactory<Moviles, String>("id"));
-        colModelo.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Modelo"));
-        colMarca.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Marca"));
-        colAlmacenamiento.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Almacenamiento"));
-        colRAM.setCellValueFactory(new PropertyValueFactory<Moviles, String>("ram"));
-        colSO.setCellValueFactory(new PropertyValueFactory<Moviles, String>("sistemaOperativo"));
-        colCPU.setCellValueFactory(new PropertyValueFactory<Moviles, String>("cpu"));
-        colBateria.setCellValueFactory(new PropertyValueFactory<Moviles, String>("bateria"));
-        colPrecioS.setCellValueFactory(new PropertyValueFactory<Moviles, String>("precioSalida"));
-        colPrecioA.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Precio"));
-        colFecha.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Fecha"));
 
-        tablaBusqueda.setItems(datos);
+        Task<List<Moviles>> task = new Task<List<Moviles>>() {
+            @Override
+            public ObservableList<Moviles> call() throws Exception {
+                return movilesDAO.obtenerMovilesconMarca(txtSearch.getText(), txtmod.getText(), txtfechasal.getText());
+            }
+        };
+        task.setOnFailed(e -> task.getException().printStackTrace());
+        task.setOnSucceeded(e -> tablaBusqueda.setItems((ObservableList<Moviles>) task.getValue()));
+        exec.execute(task);
 
     }
 
     @javafx.fxml.FXML
-    public void desTabla(){
+    public void desTabla() {
 
         tablaBusqueda.getSelectionModel().select(null);
-
 
 
     }
@@ -285,12 +309,8 @@ public class ControladorBuscar {
                         ControladorVerMoviles controladorVM = loader.getController();
 
 
-
-
-                            System.out.println("si");
-                            controladorVM.cargarDatos(m, movilesDAO.obtenerImagen(m.getId()));
-
-
+                        System.out.println("si");
+                        controladorVM.cargarDatos(m, movilesDAO.obtenerImagen(m.getId()));
 
 
                         Scene scene = new Scene(root, 698, 575);
@@ -302,8 +322,6 @@ public class ControladorBuscar {
                         Stage stagePrin = (Stage) this.txtTitulo.getScene().getWindow();
                         stage.initStyle(StageStyle.UNDECORATED);
                         stage.show();
-
-
 
 
                         scene.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -351,22 +369,63 @@ public class ControladorBuscar {
     }
 
     private void cargarDatosTabla() {
-        datos = movilesDAO.obtenerMoviles();
-        colID.setCellValueFactory(new PropertyValueFactory<Moviles, String>("id"));
-        colModelo.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Modelo"));
-        colMarca.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Marca"));
-        colAlmacenamiento.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Almacenamiento"));
-        colRAM.setCellValueFactory(new PropertyValueFactory<Moviles, String>("ram"));
-        colSO.setCellValueFactory(new PropertyValueFactory<Moviles, String>("sistemaOperativo"));
-        colCPU.setCellValueFactory(new PropertyValueFactory<Moviles, String>("cpu"));
-        colBateria.setCellValueFactory(new PropertyValueFactory<Moviles, String>("bateria"));
-        colPrecioS.setCellValueFactory(new PropertyValueFactory<Moviles, String>("precioSalida"));
-        colPrecioA.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Precio"));
-        colFecha.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Fecha"));
-
-        tablaBusqueda.setItems(datos);
+        Task<List<Moviles>> task = new Task<List<Moviles>>() {
+            @Override
+            public ObservableList<Moviles> call() throws Exception {
+                return movilesDAO.obtenerMoviles();
+            }
+        };
+        task.setOnFailed(e -> task.getException().printStackTrace());
+        task.setOnSucceeded(e -> tablaBusqueda.setItems((ObservableList<Moviles>) task.getValue()));
+        exec.execute(task);
 
     }
 
 
+    @javafx.fxml.FXML
+    public void abrirPaginaMarcas(Event event) {
+
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("marcas.fxml"));
+
+        try {
+            Parent root = loader.load();
+
+            ControladorMarcas controladorMarcas = loader.getController();
+
+
+            Scene scene = new Scene(root, 698, 575);
+
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+
+            Stage stagePrin = (Stage) this.txtTitulo.getScene().getWindow();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+
+
+            scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+
+                    x = (int) mouseEvent.getSceneX();
+                    y = (int) mouseEvent.getSceneY();
+
+                }
+            });
+
+            scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    stage.setX(mouseEvent.getScreenX() - x);
+                    stage.setY(mouseEvent.getScreenY() - y);
+                }
+            });
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

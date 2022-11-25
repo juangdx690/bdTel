@@ -112,7 +112,7 @@
             </GridPane>
          </children>
       </StackPane>
-      <Label fx:id="pestanaMarca" layoutX="630.0" layoutY="153.0" onMouseClicked="#abrirPaginaMarcas" text="Agregar marca" textFill="#2981f4">
+      <Label fx:id="pestanaMarca" layoutX="630.0" layoutY="153.0" onMouseClicked="#abrirPaginaMarcas" text="Agregar marca" textFill="#2981f4" AnchorPane.rightAnchor="126.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

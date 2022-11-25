@@ -148,8 +148,8 @@
                            </font>
                         </Label>
                         <TextField fx:id="txtModeloAct" promptText="Escribe el modelo" styleClass="textPrompt" GridPane.columnIndex="1" />
-                        <TextField fx:id="txtAlmacenamientoAct" promptText="Escribe el almacenamiento en GB" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="txtRAMAct" promptText="Escribe la memoria RAM en GB" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtAlmacenamientoAct" onKeyPressed="#soloNumeros" promptText="Escribe el almacenamiento en GB" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtRAMAct" onKeyPressed="#soloNumeros" promptText="Escribe la memoria RAM en GB" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="txtSOAct" promptText="Escribe el Sistema operativo" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <TextField fx:id="txtProcesadorAct" promptText="Escribe el procesador" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <TextField fx:id="txtBateriaAct" promptText="Escribe la batería" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="6" />

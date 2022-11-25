@@ -425,47 +425,6 @@ public class MovilesDAO {
 
     }
 
-    public boolean hayImagen(int id) {
 
-        boolean comp;
-        InputStream is = null;
-        try {
-            conexion = DriverManager.getConnection(servidor, usuario, passwd);
-
-            String SQL = "select Imagen from telefonos where id = " + id;
-
-            ResultSet resultadoConsulta = conexion.createStatement().executeQuery(SQL);
-
-            int contador = 0;
-            Blob blob= null;
-            while (resultadoConsulta.next()) {
-
-                blob = resultadoConsulta.getBlob(1);
-
-
-                contador++;
-            }
-
-
-
-            if (contador == 0) {
-                comp = false;
-            } else {
-                comp = true;
-            }
-
-
-            resultadoConsulta.close();
-            conexion.close();
-
-
-        } catch (SQLException e) {
-
-            comp = false;
-        }
-
-        return comp;
-
-    }
 
 }

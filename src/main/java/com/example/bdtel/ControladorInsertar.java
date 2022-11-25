@@ -1,20 +1,19 @@
 package com.example.bdtel;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -24,8 +23,6 @@ import javafx.util.converter.NumberStringConverter;
 import java.io.File;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
-import java.util.Optional;
 
 public class ControladorInsertar {
 
@@ -118,6 +115,8 @@ public class ControladorInsertar {
                 "", "", 0, 0, 0, null);
         realizarBindingsMoviles(movilesAUX);
         formatoFecha();
+
+
 
         quitar0campos();
     }
@@ -249,6 +248,10 @@ public class ControladorInsertar {
 
     }
 
+
+
+
+
     @javafx.fxml.FXML
     public void cerrarInsertar(Event event) {
 
@@ -314,6 +317,21 @@ public class ControladorInsertar {
             txtRutaFichero.setText(archivo.getAbsolutePath());
 
         }
+
+    }
+
+    @FXML
+    public void soloNumeros(KeyEvent event) {
+
+        txtAlmacenamientoAct.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    txtAlmacenamientoAct.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
 
     }
 }
