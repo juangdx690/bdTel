@@ -97,7 +97,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label fx:id="lblModeloAct" styleClass="labels" text="Modelo" textAlignment="CENTER">
+                        <Label fx:id="lblModeloAct" styleClass="labels" text="Modelo " textAlignment="CENTER">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -152,7 +152,7 @@
                         <TextField fx:id="txtRAMAct" onKeyPressed="#soloNumeros" promptText="Escribe la memoria RAM en GB" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="txtSOAct" promptText="Escribe el Sistema operativo" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <TextField fx:id="txtProcesadorAct" promptText="Escribe el procesador" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField fx:id="txtBateriaAct" promptText="Escribe la batería" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="txtBateriaAct" onKeyPressed="#soloNumeros" promptText="Escribe la batería" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <TextField fx:id="txtPrecioSalidaAct" promptText="Escribe el precio de salida" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <TextField fx:id="txtPrecioActualAct" promptText="Escribe el precio actual" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <Button fx:id="btnCancelarAct" mnemonicParsing="false" onAction="#cerrarInsertar" stylesheets="@../../../css/botonesAparte.css" text="Cancelar" GridPane.rowIndex="11" />

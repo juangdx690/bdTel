@@ -179,54 +179,67 @@ public class ControladorBuscar {
         if (event.getSource() == btnPagActualizar) {
 
             Moviles m = (Moviles) tablaBusqueda.getSelectionModel().getSelectedItem();
+            Alert alert;
+            if (Objects.isNull(m)) {
+
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Error");
+                alert.setContentText("Tienes que seleccionar una fila de la tabla.");
+                alert.showAndWait();
+
+            }else{
+
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("actualizar.fxml"));
+
+                try {
+                    Parent root = loader.load();
+
+                    ControladorActualizar controladorAct = loader.getController();
+
+                    controladorAct.recogerDatos(m.getId(), m.getModelo(), m.getMarca(), m.getAlmacenamiento(), m.getRam(),
+                            m.getSistemaOperativo(), m.getCpu(), m.getBateria(), m.getPrecioSalida(), m.getPrecio(),
+                            m.getFecha());
+
+                    Scene scene = new Scene(root, 1400, 700);
+
+                    Stage stage = new Stage();
+
+                    stage.setScene(scene);
+
+                    stage.initStyle(StageStyle.UNDECORATED);
+                    stage.show();
+
+                    Stage stagePrin = (Stage) this.txtTitulo.getScene().getWindow();
+
+                    stagePrin.close();
+
+                    scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent mouseEvent) {
+
+                            x = (int) mouseEvent.getSceneX();
+                            y = (int) mouseEvent.getSceneY();
+
+                        }
+                    });
+
+                    scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent mouseEvent) {
+                            stage.setX(mouseEvent.getScreenX() - x);
+                            stage.setY(mouseEvent.getScreenY() - y);
+                        }
+                    });
 
 
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("actualizar.fxml"));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
-            try {
-                Parent root = loader.load();
-
-                ControladorActualizar controladorAct = loader.getController();
-
-                controladorAct.recogerDatos(m.getId(), m.getModelo(), m.getMarca(), m.getAlmacenamiento(), m.getRam(),
-                        m.getSistemaOperativo(), m.getCpu(), m.getBateria(), m.getPrecioSalida(), m.getPrecio(),
-                        m.getFecha());
-
-                Scene scene = new Scene(root, 1400, 700);
-
-                Stage stage = new Stage();
-
-                stage.setScene(scene);
-
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.show();
-
-                Stage stagePrin = (Stage) this.txtTitulo.getScene().getWindow();
-
-                stagePrin.close();
-
-                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-
-                        x = (int) mouseEvent.getSceneX();
-                        y = (int) mouseEvent.getSceneY();
-
-                    }
-                });
-
-                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        stage.setX(mouseEvent.getScreenX() - x);
-                        stage.setY(mouseEvent.getScreenY() - y);
-                    }
-                });
-
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
+
+
 
 
         }
@@ -255,7 +268,23 @@ public class ControladorBuscar {
                 if (action.get() == ButtonType.OK) {
 
 
-                    borrarMovil(m);
+                    if (movilesDAO.borrarMovil(m)){
+
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setTitle("Insertado");
+                        alert.setContentText("Móvil borrado correctamente");
+                        alert.showAndWait();
+
+                    }else{
+
+                        alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setHeaderText(null);
+                        alert.setTitle("Error");
+                        alert.setContentText("Móvil no borrado.");
+                        alert.showAndWait();
+
+                    }
 
                     cargarDatosTabla();
 
@@ -309,7 +338,7 @@ public class ControladorBuscar {
                         ControladorVerMoviles controladorVM = loader.getController();
 
 
-                        System.out.println("si");
+
                         controladorVM.cargarDatos(m, movilesDAO.obtenerImagen(m.getId()));
 
 
@@ -361,12 +390,7 @@ public class ControladorBuscar {
     }
 
 
-    private void borrarMovil(Moviles movil) {
 
-        movilesDAO.borrarProducto(movil);
-
-
-    }
 
     private void cargarDatosTabla() {
         Task<List<Moviles>> task = new Task<List<Moviles>>() {

@@ -157,7 +157,7 @@
                         <TextField fx:id="txtBateriaAct" promptText="Escribe la batería" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <TextField fx:id="txtPrecioSalidaAct" promptText="Escribe el precio de salida" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <TextField fx:id="txtPrecioActualAct" promptText="Escribe el precio actual" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <Button fx:id="btnCancelarAct" mnemonicParsing="false" stylesheets="@../../../css/botonesAparte.css" text="Cancelar" GridPane.rowIndex="12" />
+                        <Button fx:id="btnCancelarAct" mnemonicParsing="false" onAction="#cerrarActualizar" stylesheets="@../../../css/botonesAparte.css" text="Cancelar" GridPane.rowIndex="12" />
                         <Button fx:id="btnAnadirAct" mnemonicParsing="false" onAction="#onActualizarClicked" stylesheets="@../../../css/botonesAparte.css" text="Aceptar" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                         <ComboBox fx:id="listaMarcaAct" prefHeight="26.0" prefWidth="323.0" promptText="Escoge una marca existente" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <DatePicker fx:id="txtfechaAct" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="310.0" promptText="Introduzca la fecha 'YYYY/MM/DD'" GridPane.columnIndex="1" GridPane.rowIndex="9" />

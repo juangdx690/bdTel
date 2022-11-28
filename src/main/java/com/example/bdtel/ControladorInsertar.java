@@ -117,8 +117,6 @@ public class ControladorInsertar {
         formatoFecha();
 
 
-
-        quitar0campos();
     }
 
     private void cargarDatosComboBox() {
@@ -136,15 +134,6 @@ public class ControladorInsertar {
         }
     }
 
-    public void quitar0campos() {
-
-        if (txtAlmacenamientoAct.getText() == "0") {
-
-            txtAlmacenamientoAct.setText("");
-
-        }
-
-    }
 
     @javafx.fxml.FXML
     public void pestanaClicks(ActionEvent event) {
@@ -199,6 +188,29 @@ public class ControladorInsertar {
 
         }
 
+        if (event.getSource() == btnPagActualizar) {
+
+            Alert alert;
+
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Para poder actualizar un móvil tienes que seleccionar una fila de la tabla.");
+            alert.showAndWait();
+
+        }
+
+        if (event.getSource() == btnPagBorrar) {
+
+            Alert alert;
+
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Para poder borrar un móvil tienes que seleccionar una fila de la tabla.");
+            alert.showAndWait();
+
+        }
 
     }
 
@@ -226,9 +238,25 @@ public class ControladorInsertar {
     @javafx.fxml.FXML
     public void onAltaClicked(ActionEvent actionEvent) {
 
+        Alert alert;
 
+        if (movilesDAO.anadirMovil(movilesAUX, txtRutaFichero.getText())) {
 
-        movilesDAO.anadirMovil(movilesAUX, txtRutaFichero.getText());
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setTitle("Insertado");
+            alert.setContentText("Móvil insertado correctamente");
+            alert.showAndWait();
+
+        } else {
+
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Móvil no insertado");
+            alert.showAndWait();
+
+        }
 
 
     }
@@ -247,9 +275,6 @@ public class ControladorInsertar {
         System.exit(0);
 
     }
-
-
-
 
 
     @javafx.fxml.FXML
@@ -307,12 +332,18 @@ public class ControladorInsertar {
 
         final FileChooser fileChooser = new FileChooser();
 
-        File archivo =  fileChooser.showOpenDialog(null);
+        FileChooser.ExtensionFilter extFilter =
+                new FileChooser.ExtensionFilter("Imagenes", "*.jpg", "*.png");
+
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File archivo = fileChooser.showOpenDialog(null);
+
 
         Stage stage = (Stage) listaMarcaAct.getScene().getWindow();
 
 
-        if (archivo != null){
+        if (archivo != null) {
 
             txtRutaFichero.setText(archivo.getAbsolutePath());
 
@@ -329,6 +360,27 @@ public class ControladorInsertar {
                                 String newValue) {
                 if (!newValue.matches("\\d*")) {
                     txtAlmacenamientoAct.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+
+
+        txtRAMAct.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    txtRAMAct.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+
+        txtBateriaAct.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    txtBateriaAct.setText(newValue.replaceAll("[^\\d]", ""));
                 }
             }
         });

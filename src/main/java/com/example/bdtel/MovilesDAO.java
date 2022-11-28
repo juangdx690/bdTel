@@ -356,7 +356,7 @@ public class MovilesDAO {
         return comp;
     }
 
-    public Boolean borrarProducto(Moviles movil) {
+    public Boolean borrarMovil(Moviles movil) {
         boolean comp;
         try {
             conexion = DriverManager.getConnection(servidor, usuario, passwd);

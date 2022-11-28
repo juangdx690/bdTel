@@ -1,5 +1,7 @@
 package com.example.bdtel;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -11,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -120,7 +123,6 @@ public class ControladorActualizar {
 
 
     }
-
 
 
     public void recogerDatos(int id, String modelo, String marca, int almacenamiento, int ram,
@@ -237,9 +239,118 @@ public class ControladorActualizar {
 
         }
 
+        if (event.getSource() == btnPagAnadir) {
+
+
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("insertar.fxml"));
+
+            try {
+                Parent root = loader.load();
+
+                ControladorInsertar controladorIns = loader.getController();
+
+                Scene scene = new Scene(root, 1400, 700);
+
+                Stage stage = new Stage();
+
+                stage.setScene(scene);
+
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.show();
+
+                Stage stagePrin = (Stage) this.txtTitulo.getScene().getWindow();
+
+                stagePrin.close();
+
+                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+
+                        x = (int) mouseEvent.getSceneX();
+                        y = (int) mouseEvent.getSceneY();
+
+                    }
+                });
+
+                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        stage.setX(mouseEvent.getScreenX() - x);
+                        stage.setY(mouseEvent.getScreenY() - y);
+                    }
+                });
+
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
+        }
+
+        if (event.getSource() == btnPagBorrar) {
+
+            Alert alert;
+
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Para poder borrar un móvil tienes que seleccionar una fila de la tabla.");
+            alert.showAndWait();
+
+        }
+
 
     }
 
+    @javafx.fxml.FXML
+    public void cerrarActualizar(Event event) {
+
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("buscar.fxml"));
+
+        try {
+            Parent root = loader.load();
+
+            ControladorBuscar controladorBus = loader.getController();
+
+            Scene scene = new Scene(root, 1400, 700);
+
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+
+            Stage stagePrin = (Stage) this.txtTitulo.getScene().getWindow();
+
+            stagePrin.close();
+
+            scene.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+
+                    x = (int) mouseEvent.getSceneX();
+                    y = (int) mouseEvent.getSceneY();
+
+                }
+            });
+
+            scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    stage.setX(mouseEvent.getScreenX() - x);
+                    stage.setY(mouseEvent.getScreenY() - y);
+                }
+            });
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
 
     @javafx.fxml.FXML
     public void cerrarApp(Event event) {
@@ -261,12 +372,12 @@ public class ControladorActualizar {
 
         final FileChooser fileChooser = new FileChooser();
 
-        File archivo =  fileChooser.showOpenDialog(null);
+        File archivo = fileChooser.showOpenDialog(null);
 
         Stage stage = (Stage) listaMarcaAct.getScene().getWindow();
 
 
-        if (archivo != null){
+        if (archivo != null) {
 
             rutaImg.setText(archivo.getAbsolutePath());
 
@@ -278,14 +389,48 @@ public class ControladorActualizar {
     public void onActualizarClicked(ActionEvent actionEvent) {
 
 
-        if (chbImg.isSelected()){
+        Alert alert;
 
-            System.out.println("aaa");
-            movilesDAO.actualizarMovilConRuta(movilesAUX, rutaImg.getText());
+        if (chbImg.isSelected()) {
 
-        }else{
 
-            movilesDAO.actualizarMovil(movilesAUX);
+            if (movilesDAO.actualizarMovilConRuta(movilesAUX, rutaImg.getText())) {
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Actualizado");
+                alert.setContentText("Móvil actualizado correctamente");
+                alert.showAndWait();
+
+            } else {
+
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Error");
+                alert.setContentText("Móvil no actualizado");
+                alert.showAndWait();
+
+            }
+
+        } else {
+            if (movilesDAO.actualizarMovil(movilesAUX)) {
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Actualizado");
+                alert.setContentText("Móvil actualizado correctamente");
+                alert.showAndWait();
+
+            } else {
+
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Error");
+                alert.setContentText("Móvil no actualizado");
+                alert.showAndWait();
+
+            }
+
 
         }
 
@@ -296,4 +441,6 @@ public class ControladorActualizar {
     @javafx.fxml.FXML
     public void a(Event event) {
     }
+
+
 }
