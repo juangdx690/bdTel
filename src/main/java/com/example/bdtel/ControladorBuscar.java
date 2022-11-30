@@ -7,6 +7,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -95,6 +96,10 @@ public class ControladorBuscar {
 
     private Executor exec;
 
+
+
+    private Marcas marcasAUX;
+
     public void initialize() {
 
 
@@ -119,6 +124,9 @@ public class ControladorBuscar {
         colPrecioS.setCellValueFactory(new PropertyValueFactory<Moviles, String>("precioSalida"));
         colPrecioA.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Precio"));
         colFecha.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Fecha"));
+
+
+
 
     }
 
@@ -188,7 +196,7 @@ public class ControladorBuscar {
                 alert.setContentText("Tienes que seleccionar una fila de la tabla.");
                 alert.showAndWait();
 
-            }else{
+            } else {
 
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("actualizar.fxml"));
 
@@ -240,8 +248,6 @@ public class ControladorBuscar {
             }
 
 
-
-
         }
 
         if (event.getSource() == btnPagBorrar) {
@@ -268,7 +274,7 @@ public class ControladorBuscar {
                 if (action.get() == ButtonType.OK) {
 
 
-                    if (movilesDAO.borrarMovil(m)){
+                    if (movilesDAO.borrarMovil(m)) {
 
                         alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setHeaderText(null);
@@ -276,7 +282,7 @@ public class ControladorBuscar {
                         alert.setContentText("Móvil borrado correctamente");
                         alert.showAndWait();
 
-                    }else{
+                    } else {
 
                         alert = new Alert(Alert.AlertType.ERROR);
                         alert.setHeaderText(null);
@@ -338,7 +344,6 @@ public class ControladorBuscar {
                         ControladorVerMoviles controladorVM = loader.getController();
 
 
-
                         controladorVM.cargarDatos(m, movilesDAO.obtenerImagen(m.getId()));
 
 
@@ -390,8 +395,6 @@ public class ControladorBuscar {
     }
 
 
-
-
     private void cargarDatosTabla() {
         Task<List<Moviles>> task = new Task<List<Moviles>>() {
             @Override
@@ -409,47 +412,11 @@ public class ControladorBuscar {
     @javafx.fxml.FXML
     public void abrirPaginaMarcas(Event event) {
 
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("marcas.fxml"));
+Stage marca = new Stage();
+        VentanaMarcas vtnMarcas = new VentanaMarcas();
 
-        try {
-            Parent root = loader.load();
+        vtnMarcas.start(marca);
 
-            ControladorMarcas controladorMarcas = loader.getController();
-
-
-            Scene scene = new Scene(root, 698, 575);
-
-            Stage stage = new Stage();
-
-            stage.setScene(scene);
-
-            Stage stagePrin = (Stage) this.txtTitulo.getScene().getWindow();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.show();
-
-
-            scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-
-                    x = (int) mouseEvent.getSceneX();
-                    y = (int) mouseEvent.getSceneY();
-
-                }
-            });
-
-            scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    stage.setX(mouseEvent.getScreenX() - x);
-                    stage.setY(mouseEvent.getScreenY() - y);
-                }
-            });
-
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
     }
 }
