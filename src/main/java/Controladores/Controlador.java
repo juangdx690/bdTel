@@ -1,7 +1,11 @@
-package com.example.bdtel;
+package Controladores;
 
 import java.util.Objects;
 
+import Modelo.Marcas;
+import DAO.MarcasDAO;
+import Modelo.Moviles;
+import DAO.MovilesDAO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -10,14 +14,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.util.StringConverter;
 import javafx.util.converter.LocalDateStringConverter;
 import javafx.util.converter.NumberStringConverter;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Optional;
 
 public class Controlador {

@@ -1,0 +1,16 @@
+
+
+#cierre
+{
+ -fx-background-color:  #ffff;
+-fx-text-fill: #c7c0c0;
+-fx-font-size:14;
+-fx-alignment:center;
+
+}
+
+#cierre:hover{
+
+    -fx-background-color: #FF0000;
+    -fx-text-fill: #ffff;
+}

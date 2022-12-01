@@ -1,12 +1,9 @@
-package com.example.bdtel;
+package DAO;
 
+import Modelo.Marcas;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.sql.*;
 
 public class MarcasDAO {

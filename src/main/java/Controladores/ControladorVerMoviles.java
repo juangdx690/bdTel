@@ -1,13 +1,13 @@
-package com.example.bdtel;
+package Controladores;
 
+import Modelo.Moviles;
+import DAO.MovilesDAO;
 import javafx.event.Event;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.util.converter.NumberStringConverter;
 
 import java.io.InputStream;
 

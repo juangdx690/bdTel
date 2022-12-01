@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="644.0" prefWidth="840.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bdtel.Controlador">
+<AnchorPane prefHeight="644.0" prefWidth="840.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.Controlador">
    <children>
       <VBox fx:id="pestañaBusqueda" prefHeight="562.0" prefWidth="211.0" style="-fx-background-color: #00FDAD;" AnchorPane.bottomAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>

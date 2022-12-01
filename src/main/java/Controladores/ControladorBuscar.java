@@ -1,26 +1,26 @@
-package com.example.bdtel;
+package Controladores;
 
+import DAO.MarcasDAO;
+import DAO.MovilesDAO;
+import Main.Main;
+import Modelo.Marcas;
+import Modelo.Moviles;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.converter.LocalDateStringConverter;
 
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -416,6 +416,8 @@ Stage marca = new Stage();
         VentanaMarcas vtnMarcas = new VentanaMarcas();
 
         vtnMarcas.start(marca);
+
+
 
 
     }

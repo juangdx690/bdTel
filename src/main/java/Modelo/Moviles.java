@@ -1,4 +1,4 @@
-package com.example.bdtel;
+package Modelo;
 
 import javafx.beans.property.*;
 
