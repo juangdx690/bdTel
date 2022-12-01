@@ -1,6 +1,6 @@
-package DAO;
+package com.example.bdtel.DAO;
 
-import Modelo.Marcas;
+import com.example.bdtel.Modelo.Marcas;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

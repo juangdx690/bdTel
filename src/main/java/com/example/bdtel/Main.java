@@ -1,4 +1,4 @@
-package Main;
+package com.example.bdtel;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;

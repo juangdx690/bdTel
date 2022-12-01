@@ -1,18 +1,22 @@
-package Controladores;
+package com.example.bdtel.Controladores;
 
-import DAO.MarcasDAO;
-import DAO.MovilesDAO;
-import Main.Main;
-import Modelo.Marcas;
-import Modelo.Moviles;
+import com.example.bdtel.DAO.MarcasDAO;
+import com.example.bdtel.DAO.MovilesDAO;
+import com.example.bdtel.Main;
+import com.example.bdtel.Modelo.Marcas;
+import com.example.bdtel.Modelo.Moviles;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
@@ -23,10 +27,11 @@ import javafx.util.converter.NumberStringConverter;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class ControladorActualizar {
+public class ControladorInsertar {
+
+
     @javafx.fxml.FXML
     private VBox pestañaBusqueda;
     @javafx.fxml.FXML
@@ -97,15 +102,15 @@ public class ControladorActualizar {
     private ObservableList<Moviles> datos;
     private ObservableList<Marcas> datos2;
 
-    private ObservableList<String> datos2String;
 
-    private int x = 0, y = 0;
+    private int x = 0;
+    private int y = 0;
     @javafx.fxml.FXML
-    private Label lblImg;
+    private Label lblImgAct;
     @javafx.fxml.FXML
-    private CheckBox chbImg;
+    private TextField txtRutaFichero;
     @javafx.fxml.FXML
-    private TextField rutaImg;
+    private Button btnBuscarImg;
 
     public void initialize() {
 
@@ -114,30 +119,7 @@ public class ControladorActualizar {
         movilesAUX = new Moviles(0, "", "", 0, 0,
                 "", "", 0, 0, 0, null);
         realizarBindingsMoviles(movilesAUX);
-
         formatoFecha();
-
-
-    }
-
-
-    public void recogerDatos(int id, String modelo, String marca, int almacenamiento, int ram,
-                             String sistemaOperativo, String cpu, int bateria, double precioSalida, double precio, String fecha) {
-
-        movilesAUX.setId(id);
-        movilesAUX.setModelo(modelo);
-        movilesAUX.setMarca(marca);
-        movilesAUX.setAlmacenamiento(almacenamiento);
-        movilesAUX.setRam(ram);
-        movilesAUX.setSistemaOperativo(sistemaOperativo);
-        movilesAUX.setCpu(cpu);
-        movilesAUX.setBateria(bateria);
-        movilesAUX.setPrecioSalida(precioSalida);
-        movilesAUX.setPrecio(precio);
-        movilesAUX.setDate(LocalDate.parse(fecha));
-        String texto = txtTitulo.getText() + " " + modelo;
-
-        txtTitulo.setText(texto);
 
 
     }
@@ -155,30 +137,6 @@ public class ControladorActualizar {
             System.out.println(datos2.get(i).getMarca());
             i++;
         }
-
-
-    }
-
-
-    public void realizarBindingsMoviles(Moviles moviles) {
-
-        txtModeloAct.textProperty().bindBidirectional(movilesAUX.modeloProperty());
-
-        listaMarcaAct.valueProperty().bindBidirectional(movilesAUX.marcaProperty());
-
-        txtAlmacenamientoAct.textProperty().bindBidirectional(movilesAUX.almacenamientoProperty(), new NumberStringConverter());
-        txtRAMAct.textProperty().bindBidirectional(movilesAUX.ramProperty(), new NumberStringConverter());
-        txtSOAct.textProperty().bindBidirectional(movilesAUX.sistemaOperativoProperty());
-
-
-        txtProcesadorAct.textProperty().bindBidirectional(movilesAUX.cpuProperty());
-        txtBateriaAct.textProperty().bindBidirectional(movilesAUX.bateriaProperty(), new NumberStringConverter());
-        txtPrecioSalidaAct.textProperty().bindBidirectional(movilesAUX.precioSalidaProperty(), new NumberStringConverter());
-        txtPrecioActualAct.textProperty().bindBidirectional(movilesAUX.precioProperty(), new NumberStringConverter());
-
-        txtfechaAct.valueProperty().bindBidirectional(movilesAUX.dateProperty());
-
-
     }
 
 
@@ -235,52 +193,15 @@ public class ControladorActualizar {
 
         }
 
-        if (event.getSource() == btnPagAnadir) {
+        if (event.getSource() == btnPagActualizar) {
 
+            Alert alert;
 
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("insertar.fxml"));
-
-            try {
-                Parent root = loader.load();
-
-                ControladorInsertar controladorIns = loader.getController();
-
-                Scene scene = new Scene(root, 1400, 700);
-
-                Stage stage = new Stage();
-
-                stage.setScene(scene);
-
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.show();
-
-                Stage stagePrin = (Stage) this.txtTitulo.getScene().getWindow();
-
-                stagePrin.close();
-
-                scene.setOnMousePressed(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-
-                        x = (int) mouseEvent.getSceneX();
-                        y = (int) mouseEvent.getSceneY();
-
-                    }
-                });
-
-                scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        stage.setX(mouseEvent.getScreenX() - x);
-                        stage.setY(mouseEvent.getScreenY() - y);
-                    }
-                });
-
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Para poder actualizar un móvil tienes que seleccionar una fila de la tabla.");
+            alert.showAndWait();
 
         }
 
@@ -296,11 +217,73 @@ public class ControladorActualizar {
 
         }
 
+    }
+
+    public void realizarBindingsMoviles(Moviles moviles) {
+
+        txtModeloAct.textProperty().bindBidirectional(movilesAUX.modeloProperty());
+
+        listaMarcaAct.valueProperty().bindBidirectional(movilesAUX.marcaProperty());
+
+        txtAlmacenamientoAct.textProperty().bindBidirectional(movilesAUX.almacenamientoProperty(), new NumberStringConverter());
+        txtRAMAct.textProperty().bindBidirectional(movilesAUX.ramProperty(), new NumberStringConverter());
+        txtSOAct.textProperty().bindBidirectional(movilesAUX.sistemaOperativoProperty());
+
+
+        txtProcesadorAct.textProperty().bindBidirectional(movilesAUX.cpuProperty());
+        txtBateriaAct.textProperty().bindBidirectional(movilesAUX.bateriaProperty(), new NumberStringConverter());
+        txtPrecioSalidaAct.textProperty().bindBidirectional(movilesAUX.precioSalidaProperty(), new NumberStringConverter());
+        txtPrecioActualAct.textProperty().bindBidirectional(movilesAUX.precioProperty(), new NumberStringConverter());
+
+        txtfechaAct.valueProperty().bindBidirectional(movilesAUX.dateProperty());
+
 
     }
 
     @javafx.fxml.FXML
-    public void cerrarActualizar(Event event) {
+    public void onAltaClicked(ActionEvent actionEvent) {
+
+        Alert alert;
+
+        if (movilesDAO.anadirMovil(movilesAUX, txtRutaFichero.getText())) {
+
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setTitle("Insertado");
+            alert.setContentText("Móvil insertado correctamente");
+            alert.showAndWait();
+
+        } else {
+
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Móvil no insertado");
+            alert.showAndWait();
+
+        }
+
+
+    }
+
+
+    public void formatoFecha() {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        txtfechaAct.setConverter(new LocalDateStringConverter(formatter, null));
+
+    }
+
+    @javafx.fxml.FXML
+    public void cerrarApp(Event event) {
+
+        System.exit(0);
+
+    }
+
+
+    @javafx.fxml.FXML
+    public void cerrarInsertar(Event event) {
 
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("buscar.fxml"));
 
@@ -348,95 +331,64 @@ public class ControladorActualizar {
 
     }
 
-    @javafx.fxml.FXML
-    public void cerrarApp(Event event) {
 
-        System.exit(0);
-
-    }
-
-
-    public void formatoFecha() {
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        txtfechaAct.setConverter(new LocalDateStringConverter(formatter, null));
-
-    }
-
-    @Deprecated
+    @FXML
     public void buscarRutaImg(ActionEvent actionEvent) {
 
         final FileChooser fileChooser = new FileChooser();
 
+        FileChooser.ExtensionFilter extFilter =
+                new FileChooser.ExtensionFilter("Imagenes", "*.jpg", "*.png");
+
+        fileChooser.getExtensionFilters().add(extFilter);
+
         File archivo = fileChooser.showOpenDialog(null);
+
 
         Stage stage = (Stage) listaMarcaAct.getScene().getWindow();
 
 
         if (archivo != null) {
 
-            rutaImg.setText(archivo.getAbsolutePath());
+            txtRutaFichero.setText(archivo.getAbsolutePath());
 
         }
 
     }
 
-    @javafx.fxml.FXML
-    public void onActualizarClicked(ActionEvent actionEvent) {
+    @FXML
+    public void soloNumeros(KeyEvent event) {
 
-
-        Alert alert;
-
-        if (chbImg.isSelected()) {
-
-
-            if (movilesDAO.actualizarMovilConRuta(movilesAUX, rutaImg.getText())) {
-
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setTitle("Actualizado");
-                alert.setContentText("Móvil actualizado correctamente");
-                alert.showAndWait();
-
-            } else {
-
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setTitle("Error");
-                alert.setContentText("Móvil no actualizado");
-                alert.showAndWait();
-
+        txtAlmacenamientoAct.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    txtAlmacenamientoAct.setText(newValue.replaceAll("[^\\d]", ""));
+                }
             }
+        });
 
-        } else {
-            if (movilesDAO.actualizarMovil(movilesAUX)) {
 
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setTitle("Actualizado");
-                alert.setContentText("Móvil actualizado correctamente");
-                alert.showAndWait();
-
-            } else {
-
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setTitle("Error");
-                alert.setContentText("Móvil no actualizado");
-                alert.showAndWait();
-
+        txtRAMAct.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    txtRAMAct.setText(newValue.replaceAll("[^\\d]", ""));
+                }
             }
+        });
 
-
-        }
-
+        txtBateriaAct.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    txtBateriaAct.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
 
     }
-
-
-    @javafx.fxml.FXML
-    public void a(Event event) {
-    }
-
-
 }

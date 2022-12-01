@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="644.0" prefWidth="840.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.Controlador">
+<AnchorPane prefHeight="644.0" prefWidth="840.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bdtel.Controladores.Controlador">
    <children>
       <VBox fx:id="pestañaBusqueda" prefHeight="562.0" prefWidth="211.0" style="-fx-background-color: #00FDAD;" AnchorPane.bottomAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>
@@ -103,7 +103,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label fx:id="lblModeloAct" styleClass="labels" text="Modelo" textAlignment="CENTER">
+                        <Label fx:id="lblModeloAct" styleClass="labels" text="com.example.bdtel.Modelo" textAlignment="CENTER">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -196,7 +196,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label fx:id="lblModelo" styleClass="labels" text="Modelo" textAlignment="CENTER">
+                        <Label fx:id="lblModelo" styleClass="labels" text="com.example.bdtel.Modelo" textAlignment="CENTER">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -281,7 +281,7 @@
                   <TableView fx:id="tablaBusqueda" prefHeight="447.0" prefWidth="623.0" styleClass="texto" stylesheets="@../../../css/estilos.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <columns>
                         <TableColumn fx:id="colID" editable="false" prefWidth="20.79998779296875" styleClass="texto" text="ID" />
-                        <TableColumn fx:id="colModelo" editable="false" prefWidth="79.199951171875" styleClass="texto" text="Modelo" />
+                        <TableColumn fx:id="colModelo" editable="false" prefWidth="79.199951171875" styleClass="texto" text="com.example.bdtel.Modelo" />
                         <TableColumn fx:id="colMarca" editable="false" prefWidth="64.0" styleClass="texto" text="Marca" />
                         <TableColumn fx:id="colAlmacenamiento" editable="false" prefWidth="104.00006103515625" styleClass="texto" text="Almacenamiento" />
                         <TableColumn fx:id="colRAM" editable="false" prefWidth="52.800048828125" styleClass="texto" text="RAM" />

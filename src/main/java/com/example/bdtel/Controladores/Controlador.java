@@ -1,11 +1,11 @@
-package Controladores;
+package com.example.bdtel.Controladores;
 
 import java.util.Objects;
 
-import Modelo.Marcas;
-import DAO.MarcasDAO;
-import Modelo.Moviles;
-import DAO.MovilesDAO;
+import com.example.bdtel.Modelo.Marcas;
+import com.example.bdtel.DAO.MarcasDAO;
+import com.example.bdtel.Modelo.Moviles;
+import com.example.bdtel.DAO.MovilesDAO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;

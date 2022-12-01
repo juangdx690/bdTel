@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="644.0" prefWidth="840.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ControladorInsertar">
+<AnchorPane prefHeight="644.0" prefWidth="840.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bdtel.Controladores.ControladorInsertar">
    <children>
       <VBox fx:id="pestañaBusqueda" prefHeight="562.0" prefWidth="211.0" style="-fx-background-color: #013E88;" AnchorPane.bottomAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>
@@ -97,7 +97,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label fx:id="lblModeloAct" styleClass="labels" text="Modelo " textAlignment="CENTER">
+                        <Label fx:id="lblModeloAct" styleClass="labels" text="com.example.bdtel.Modelo " textAlignment="CENTER">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>

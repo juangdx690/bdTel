@@ -1,7 +1,7 @@
-package Main;
+package com.example.bdtel;
 
-import DAO.MarcasDAO;
-import Modelo.Marcas;
+import com.example.bdtel.DAO.MarcasDAO;
+import com.example.bdtel.Modelo.Marcas;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

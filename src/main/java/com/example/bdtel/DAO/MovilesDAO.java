@@ -1,6 +1,6 @@
-package DAO;
+package com.example.bdtel.DAO;
 
-import Modelo.Moviles;
+import com.example.bdtel.Modelo.Moviles;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -123,7 +123,7 @@ public class MovilesDAO {
             try {
                 conexion = DriverManager.getConnection(servidor, usuario, passwd);
                 String SQL = "INSERT INTO telefonos("
-                        + "Modelo ,"
+                        + "com.example.bdtel.Modelo ,"
                         + "Marca ,"
                         + "Almacenamiento ,"
                         + "RAM ,"
@@ -170,7 +170,7 @@ public class MovilesDAO {
             try {
                 conexion = DriverManager.getConnection(servidor, usuario, passwd);
                 String SQL = "INSERT INTO telefonos("
-                        + "Modelo ,"
+                        + "com.example.bdtel.Modelo ,"
                         + "Marca ,"
                         + "Almacenamiento ,"
                         + "RAM ,"
@@ -235,7 +235,7 @@ public class MovilesDAO {
             conexion = DriverManager.getConnection(servidor, usuario, passwd);
             String SQL = "UPDATE telefonos "
                     + "SET "
-                    + " Modelo = ? ,"
+                    + " com.example.bdtel.Modelo = ? ,"
                     + " Marca = ? ,"
                     + " Almacenamiento = ? ,"
                     + " RAM = ? ,"
@@ -295,7 +295,7 @@ public class MovilesDAO {
             conexion = DriverManager.getConnection(servidor, usuario, passwd);
             String SQL = "UPDATE telefonos "
                     + "SET "
-                    + " Modelo = ? ,"
+                    + " com.example.bdtel.Modelo = ? ,"
                     + " Marca = ? ,"
                     + " Almacenamiento = ? ,"
                     + " RAM = ? ,"

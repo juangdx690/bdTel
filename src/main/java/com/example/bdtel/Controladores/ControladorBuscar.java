@@ -1,15 +1,18 @@
-package Controladores;
+package com.example.bdtel.Controladores;
 
-import DAO.MarcasDAO;
-import DAO.MovilesDAO;
-import Main.Main;
-import Modelo.Marcas;
-import Modelo.Moviles;
+
+import com.example.bdtel.DAO.MarcasDAO;
+import com.example.bdtel.DAO.MovilesDAO;
+import com.example.bdtel.Main;
+import com.example.bdtel.VentanaMarcas;
+import com.example.bdtel.Modelo.Marcas;
+import com.example.bdtel.Modelo.Moviles;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -409,7 +412,7 @@ public class ControladorBuscar {
     }
 
 
-    @javafx.fxml.FXML
+    @FXML
     public void abrirPaginaMarcas(Event event) {
 
 Stage marca = new Stage();

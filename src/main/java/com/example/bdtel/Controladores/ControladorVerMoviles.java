@@ -1,7 +1,7 @@
-package Controladores;
+package com.example.bdtel.Controladores;
 
-import Modelo.Moviles;
-import DAO.MovilesDAO;
+import com.example.bdtel.Modelo.Moviles;
+import com.example.bdtel.DAO.MovilesDAO;
 import javafx.event.Event;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
