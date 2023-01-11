@@ -39,7 +39,7 @@
                   <String fx:value="botonSel" />
                </styleClass>
             </Button>
-            <Button fx:id="btnPagAnadir" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#pestanaClicks" prefHeight="46.0" prefWidth="216.0" style="-fx-font-weight: bold;" styleClass="boton" stylesheets="@../../../css/estilos.css" text="✔ Añadir" textFill="WHITE">
+            <Button id="paganiadir" fx:id="btnPagAnadir" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#pestanaClicks" prefHeight="46.0" prefWidth="216.0" style="-fx-font-weight: bold;" styleClass="boton" stylesheets="@../../../css/estilos.css" text="✔ Añadir" textFill="WHITE">
                <padding>
                   <Insets left="50.0" />
                </padding>

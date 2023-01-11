@@ -97,7 +97,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label fx:id="lblModeloAct" styleClass="labels" text="com.example.bdtel.Modelo " textAlignment="CENTER">
+                        <Label fx:id="lblModeloAct" styleClass="labels" text="Modelo" textAlignment="CENTER">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>
@@ -147,18 +147,18 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtModeloAct" promptText="Escribe el modelo" styleClass="textPrompt" GridPane.columnIndex="1" />
-                        <TextField fx:id="txtAlmacenamientoAct" onKeyPressed="#soloNumeros" promptText="Escribe el almacenamiento en GB" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="txtRAMAct" onKeyPressed="#soloNumeros" promptText="Escribe la memoria RAM en GB" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="txtSOAct" promptText="Escribe el Sistema operativo" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField fx:id="txtProcesadorAct" promptText="Escribe el procesador" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField fx:id="txtBateriaAct" onKeyPressed="#soloNumeros" promptText="Escribe la batería" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <TextField fx:id="txtPrecioSalidaAct" promptText="Escribe el precio de salida" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <TextField fx:id="txtPrecioActualAct" promptText="Escribe el precio actual" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField id="modelo" fx:id="txtModeloAct" promptText="Escribe el modelo" styleClass="textPrompt" GridPane.columnIndex="1" />
+                        <TextField id="memoria" fx:id="txtAlmacenamientoAct" onKeyPressed="#soloNumeros" promptText="Escribe el almacenamiento en GB" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField id="ram" fx:id="txtRAMAct" onKeyPressed="#soloNumeros" promptText="Escribe la memoria RAM en GB" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField id="sos" fx:id="txtSOAct" promptText="Escribe el Sistema operativo" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField id="procesador" fx:id="txtProcesadorAct" promptText="Escribe el procesador" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField id="bateria" fx:id="txtBateriaAct" onKeyPressed="#soloNumeros" promptText="Escribe la batería" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField id="psalida" fx:id="txtPrecioSalidaAct" promptText="Escribe el precio de salida" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField id="pactual" fx:id="txtPrecioActualAct" promptText="Escribe el precio actual" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <Button fx:id="btnCancelarAct" mnemonicParsing="false" onAction="#cerrarInsertar" stylesheets="@../../../css/botonesAparte.css" text="Cancelar" GridPane.rowIndex="11" />
-                        <Button fx:id="btnAnadirAct" mnemonicParsing="false" onAction="#onAltaClicked" stylesheets="@../../../css/botonesAparte.css" text="Aceptar" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                        <ComboBox fx:id="listaMarcaAct" prefHeight="26.0" prefWidth="323.0" promptText="Escoge una marca existente" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <DatePicker fx:id="txtfechaAct" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="310.0" promptText="Introduzca la fecha 'YYYY/MM/DD'" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <Button id="enviarDatosABD" fx:id="btnAnadirAct" mnemonicParsing="false" onAction="#onAltaClicked" stylesheets="@../../../css/botonesAparte.css" text="Aceptar" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                        <ComboBox id="marca" fx:id="listaMarcaAct" prefHeight="26.0" prefWidth="323.0" promptText="Escoge una marca existente" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <DatePicker id="fecha" fx:id="txtfechaAct" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="310.0" promptText="Introduzca la fecha 'YYYY/MM/DD'" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                         <Label fx:id="lblImgAct" styleClass="labels" text="Imagen" textAlignment="CENTER" GridPane.rowIndex="10">
                            <font>
                               <Font name="Arial" size="14.0" />
@@ -174,7 +174,7 @@
                           </rowConstraints>
                            <children>
                               <TextField fx:id="txtRutaFichero" promptText="Busca el fichero" styleClass="textPrompt" />
-                              <Button fx:id="btnBuscarImg" mnemonicParsing="false" onAction="#buscarRutaImg" text="Buscar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                              <Button id="img" fx:id="btnBuscarImg" mnemonicParsing="false" onAction="#buscarRutaImg" text="Buscar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                            </children>
                         </GridPane>
                      </children>

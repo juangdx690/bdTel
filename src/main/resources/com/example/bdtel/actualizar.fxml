@@ -99,7 +99,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label fx:id="lblModeloAct" styleClass="labels" text="com.example.bdtel.Modelo" textAlignment="CENTER">
+                        <Label fx:id="lblModeloAct" styleClass="labels" text="Modelo" textAlignment="CENTER">
                            <font>
                               <Font name="Arial" size="14.0" />
                            </font>

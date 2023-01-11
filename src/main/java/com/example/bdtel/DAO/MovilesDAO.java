@@ -123,7 +123,7 @@ public class MovilesDAO {
             try {
                 conexion = DriverManager.getConnection(servidor, usuario, passwd);
                 String SQL = "INSERT INTO telefonos("
-                        + "com.example.bdtel.Modelo ,"
+                        + "Modelo ,"
                         + "Marca ,"
                         + "Almacenamiento ,"
                         + "RAM ,"
@@ -131,9 +131,9 @@ public class MovilesDAO {
                         + "Procesador ,"
                         + "Bateria ,"
                         + "Preciosalida ,"
-                        + "Precioactual ,"
-                        + "Fechalanzamiento)"
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        + "Precioactual )"
+                       // + "Fechalanzamiento)"
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 PreparedStatement st = conexion.prepareStatement(SQL);
                 st.setString(1, moviles.getModelo());
@@ -145,7 +145,7 @@ public class MovilesDAO {
                 st.setInt(7, moviles.getBateria());
                 st.setDouble(8, moviles.getPrecioSalida());
                 st.setDouble(9, moviles.getPrecio());
-                st.setDate(10, Date.valueOf(moviles.getDate()));
+               // st.setDate(10, Date.valueOf(moviles.getDate()));
 
 
                 registrosAfectadosConsulta = st.executeUpdate();
@@ -170,7 +170,7 @@ public class MovilesDAO {
             try {
                 conexion = DriverManager.getConnection(servidor, usuario, passwd);
                 String SQL = "INSERT INTO telefonos("
-                        + "com.example.bdtel.Modelo ,"
+                        + "Modelo ,"
                         + "Marca ,"
                         + "Almacenamiento ,"
                         + "RAM ,"
@@ -179,9 +179,9 @@ public class MovilesDAO {
                         + "Bateria ,"
                         + "Preciosalida ,"
                         + "Precioactual ,"
-                        + "Fechalanzamiento,"
+                       // + "Fechalanzamiento,"
                         + " Imagen)"
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 PreparedStatement st = conexion.prepareStatement(SQL);
                 st.setString(1, moviles.getModelo());
@@ -193,7 +193,7 @@ public class MovilesDAO {
                 st.setInt(7, moviles.getBateria());
                 st.setDouble(8, moviles.getPrecioSalida());
                 st.setDouble(9, moviles.getPrecio());
-                st.setDate(10, Date.valueOf(moviles.getDate()));
+              //  st.setDate(10, Date.valueOf(moviles.getDate()));
 
                 File file = new File(ruta);
 
@@ -235,7 +235,7 @@ public class MovilesDAO {
             conexion = DriverManager.getConnection(servidor, usuario, passwd);
             String SQL = "UPDATE telefonos "
                     + "SET "
-                    + " com.example.bdtel.Modelo = ? ,"
+                    + "Modelo = ? ,"
                     + " Marca = ? ,"
                     + " Almacenamiento = ? ,"
                     + " RAM = ? ,"
@@ -295,7 +295,7 @@ public class MovilesDAO {
             conexion = DriverManager.getConnection(servidor, usuario, passwd);
             String SQL = "UPDATE telefonos "
                     + "SET "
-                    + " com.example.bdtel.Modelo = ? ,"
+                    + "Modelo = ? ,"
                     + " Marca = ? ,"
                     + " Almacenamiento = ? ,"
                     + " RAM = ? ,"
