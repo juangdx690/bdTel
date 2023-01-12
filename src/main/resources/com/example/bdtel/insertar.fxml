@@ -29,7 +29,7 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="btnPagBuscar" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#pestanaClicks" prefHeight="46.0" prefWidth="216.0" style="-fx-font-weight: bold;" styleClass="boton" stylesheets="@../../../css/estilos.css" text="🔎 Buscar" textFill="WHITE">
+            <Button id="pagBuscar" fx:id="btnPagBuscar" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#pestanaClicks" prefHeight="46.0" prefWidth="216.0" style="-fx-font-weight: bold;" styleClass="boton" stylesheets="@../../../css/estilos.css" text="🔎 Buscar" textFill="WHITE">
                <padding>
                   <Insets left="50.0" />
                </padding>
@@ -63,7 +63,7 @@
                </font>
             </Label>
          </children></Pane>
-      <Label fx:id="btnSalir" alignment="CENTER" layoutX="803.0" layoutY="14.0" onMouseClicked="#cerrarApp" prefHeight="27.0" prefWidth="22.0" stylesheets="@../../../css/estilosBTNCIerre.css" text="❌" textAlignment="CENTER" textFill="#c7c0c0" AnchorPane.rightAnchor="14.600000000000023" AnchorPane.topAnchor="5.0">
+      <Label id="cerrarApp" fx:id="btnSalir" alignment="CENTER" layoutX="803.0" layoutY="14.0" onMouseClicked="#cerrarApp" prefHeight="27.0" prefWidth="22.0" stylesheets="@../../../css/estilosBTNCIerre.css" text="❌" textAlignment="CENTER" textFill="#c7c0c0" AnchorPane.rightAnchor="14.600000000000023" AnchorPane.topAnchor="5.0">
          <font>
             <Font size="14.0" />
          </font></Label>
@@ -156,7 +156,7 @@
                         <TextField id="psalida" fx:id="txtPrecioSalidaAct" promptText="Escribe el precio de salida" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <TextField id="pactual" fx:id="txtPrecioActualAct" promptText="Escribe el precio actual" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <Button fx:id="btnCancelarAct" mnemonicParsing="false" onAction="#cerrarInsertar" stylesheets="@../../../css/botonesAparte.css" text="Cancelar" GridPane.rowIndex="11" />
-                        <Button id="enviarDatosABD" fx:id="btnAnadirAct" mnemonicParsing="false" onAction="#onAltaClicked" stylesheets="@../../../css/botonesAparte.css" text="Aceptar" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                        <Button id="enviarDatosABD" fx:id="btnAnadirAct" mnemonicParsing="false" onAction="#onAltaClicked" stylesheets="@../../../css/botonesAparte.css" text="Insertar" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                         <ComboBox id="marca" fx:id="listaMarcaAct" prefHeight="26.0" prefWidth="323.0" promptText="Escoge una marca existente" styleClass="textPrompt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <DatePicker id="fecha" fx:id="txtfechaAct" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="310.0" promptText="Introduzca la fecha 'YYYY/MM/DD'" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                         <Label fx:id="lblImgAct" styleClass="labels" text="Imagen" textAlignment="CENTER" GridPane.rowIndex="10">

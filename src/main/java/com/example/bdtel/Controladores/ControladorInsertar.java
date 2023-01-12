@@ -247,11 +247,21 @@ public class ControladorInsertar {
 
         if (movilesDAO.anadirMovil(movilesAUX, txtRutaFichero.getText())) {
 
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText(null);
-            alert.setTitle("Insertado");
-            alert.setContentText("Móvil insertado correctamente");
-            alert.showAndWait();
+            if (txtModeloAct.getText().equals("")){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Error");
+                alert.setContentText("Móvil no insertado");
+                alert.showAndWait();
+            }else{
+
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Insertado");
+                alert.setContentText("Móvil insertado correctamente");
+                alert.showAndWait();
+
+            }
 
         } else {
 

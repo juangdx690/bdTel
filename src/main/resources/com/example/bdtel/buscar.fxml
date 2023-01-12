@@ -79,10 +79,10 @@
                   <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="186.40001831054687" vgrow="ALWAYS" />
                </rowConstraints>
                <children>
-                  <TableView fx:id="tablaBusqueda" prefHeight="447.0" prefWidth="623.0" styleClass="texto" stylesheets="@../../../css/estilos.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <TableView id="tabla" fx:id="tablaBusqueda" prefHeight="447.0" prefWidth="623.0" styleClass="texto" stylesheets="@../../../css/estilos.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <columns>
                         <TableColumn fx:id="colID" editable="false" prefWidth="20.79998779296875" styleClass="texto" text="ID" />
-                        <TableColumn fx:id="colModelo" editable="false" prefWidth="79.199951171875" styleClass="texto" text="com.example.bdtel.Modelo" />
+                        <TableColumn id="modelo" fx:id="colModelo" editable="false" prefWidth="79.199951171875" styleClass="texto" text="Modelo" />
                         <TableColumn fx:id="colMarca" editable="false" prefWidth="64.0" styleClass="texto" text="Marca" />
                         <TableColumn fx:id="colAlmacenamiento" editable="false" prefWidth="104.00006103515625" styleClass="texto" text="Almacenamiento" />
                         <TableColumn fx:id="colRAM" editable="false" prefWidth="52.800048828125" styleClass="texto" text="RAM" />
