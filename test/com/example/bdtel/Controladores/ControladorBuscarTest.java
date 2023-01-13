@@ -1,5 +1,6 @@
 package com.example.bdtel.Controladores;
 
+import com.example.bdtel.DAO.MovilesDAO;
 import com.example.bdtel.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -19,9 +20,13 @@ import org.testfx.matcher.control.ComboBoxMatchers;
 import org.testfx.matcher.control.TableViewMatchers;
 import org.testfx.matcher.control.TextInputControlMatchers;
 
+
+
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+
 
 @ExtendWith(ApplicationExtension.class)
 class ControladorBuscarTest {
@@ -37,6 +42,8 @@ class ControladorBuscarTest {
         stage.show();
         stage.toFront();
     }
+
+
 
     @Test
     void falloAlta(FxRobot robot){
@@ -87,9 +94,9 @@ class ControladorBuscarTest {
 
         FxAssert.verifyThat(robot.window("Error"), WindowMatchers.isShowing());
 
-        robot.sleep(1000);
 
-        robot.clickOn("#cerrarApp");
+
+
 
     }
 
@@ -159,7 +166,7 @@ class ControladorBuscarTest {
 
         robot.sleep(1000);
 
-        robot.clickOn("#cerrarApp");
+
 
 
     }

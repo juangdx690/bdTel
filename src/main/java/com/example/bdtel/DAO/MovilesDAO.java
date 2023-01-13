@@ -112,6 +112,106 @@ public class MovilesDAO {
 
     }
 
+    public int obtenerMovilesconMarcaTest(Moviles m) {
+
+        ObservableList<Moviles> datosResultadoConsulta = FXCollections.observableArrayList();
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        String fechaActual = dtf.format(LocalDateTime.now());
+
+
+        try {
+            conexion = DriverManager.getConnection(servidor, usuario, passwd);
+            String SQL = "select * from telefonos where id="+m.getId()+" and modelo='"+m.getModelo()+"' and marca='"
+                    +m.getMarca()+"' and almacenamiento="+m.getAlmacenamiento()+" and ram="+m.getRam()+" and sistemaoperativo='"
+                    +m.getSistemaOperativo()+"' and procesador='"+m.getCpu()+"' and bateria="+m.getBateria()+" and preciosalida="
+                    +m.getPrecioSalida()+" and precioactual="+m.getPrecio();
+
+            ResultSet resultadoConsulta = conexion.createStatement().executeQuery(SQL);
+
+            while (resultadoConsulta.next()) {
+
+                datosResultadoConsulta.add(new Moviles(
+
+                        resultadoConsulta.getInt("ID"),
+                        resultadoConsulta.getString("Modelo"),
+                        resultadoConsulta.getString("Marca"),
+                        resultadoConsulta.getInt("Almacenamiento"),
+                        resultadoConsulta.getInt("RAM"),
+                        resultadoConsulta.getString("Sistemaoperativo"),
+                        resultadoConsulta.getString("Procesador"),
+                        resultadoConsulta.getInt("Bateria"),
+                        resultadoConsulta.getDouble("Preciosalida"),
+                        resultadoConsulta.getDouble("Precioactual"),
+                        resultadoConsulta.getString("Fechalanzamiento"))
+
+                );
+
+
+            }
+
+            conexion.close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            System.out.println("Error:" + e.toString());
+            conexion.close();
+        } finally {
+            return datosResultadoConsulta.size();
+        }
+
+
+    }
+
+    public String buscarTest( String modelo) {
+
+        ObservableList<Moviles> datosResultadoConsulta = FXCollections.observableArrayList();
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        String fechaActual = dtf.format(LocalDateTime.now());
+
+
+        try {
+            conexion = DriverManager.getConnection(servidor, usuario, passwd);
+            String SQL = "select * from telefonos where modelo='"+modelo+"'";
+
+            ResultSet resultadoConsulta = conexion.createStatement().executeQuery(SQL);
+
+            while (resultadoConsulta.next()) {
+
+                datosResultadoConsulta.add(new Moviles(
+
+                        resultadoConsulta.getInt("ID"),
+                        resultadoConsulta.getString("Modelo"),
+                        resultadoConsulta.getString("Marca"),
+                        resultadoConsulta.getInt("Almacenamiento"),
+                        resultadoConsulta.getInt("RAM"),
+                        resultadoConsulta.getString("Sistemaoperativo"),
+                        resultadoConsulta.getString("Procesador"),
+                        resultadoConsulta.getInt("Bateria"),
+                        resultadoConsulta.getDouble("Preciosalida"),
+                        resultadoConsulta.getDouble("Precioactual"),
+                        resultadoConsulta.getString("Fechalanzamiento"))
+
+                );
+
+
+            }
+
+            conexion.close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            System.out.println("Error:" + e.toString());
+            conexion.close();
+        } finally {
+            return datosResultadoConsulta.toString();
+        }
+
+
+    }
 
     public Boolean anadirMovil(Moviles moviles, String ruta) {
         int registrosAfectadosConsulta = 0;
@@ -226,6 +326,52 @@ public class MovilesDAO {
 
 
         return comprobacion;
+    }
+
+    public int anadirMovilTest(Moviles moviles) {
+
+        int registrosAfectadosConsulta = 0;
+        try {
+            conexion = DriverManager.getConnection(servidor, usuario, passwd);
+            String SQL = "INSERT INTO telefonos("
+                    + "Modelo ,"
+                    + "Marca ,"
+                    + "Almacenamiento ,"
+                    + "RAM ,"
+                    + "Sistemaoperativo ,"
+                    + "Procesador ,"
+                    + "Bateria ,"
+                    + "Preciosalida ,"
+                    + "Precioactual )"
+                    // + "Fechalanzamiento)"
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement st = conexion.prepareStatement(SQL);
+            st.setString(1, moviles.getModelo());
+            st.setString(2, moviles.getMarca());
+            st.setInt(3, moviles.getAlmacenamiento());
+            st.setInt(4, moviles.getRam());
+            st.setString(5, moviles.getSistemaOperativo());
+            st.setString(6, moviles.getCpu());
+            st.setInt(7, moviles.getBateria());
+            st.setDouble(8, moviles.getPrecioSalida());
+            st.setDouble(9, moviles.getPrecio());
+            // st.setDate(10, Date.valueOf(moviles.getDate()));
+
+
+            registrosAfectadosConsulta = st.executeUpdate();
+            st.close();
+            conexion.close();
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error:" + e.toString());
+
+        }
+
+        return registrosAfectadosConsulta;
     }
 
 
@@ -385,6 +531,39 @@ public class MovilesDAO {
         }
 
         return comp;
+
+    }
+
+    public int borrarMovilTest(Moviles movil) {
+        boolean comp;
+        int registros=0;
+        try {
+            conexion = DriverManager.getConnection(servidor, usuario, passwd);
+            String SQL = "DELETE FROM telefonos "
+                    + " WHERE ID = ?";
+
+            PreparedStatement st = conexion.prepareStatement(SQL);
+
+            st.setInt(1, movil.getId());
+
+            registros = st.executeUpdate();
+            st.close();
+            conexion.close();
+
+            if (registros == 1) {
+
+                comp = true;
+            } else {
+
+                comp = false;
+            }
+
+        } catch (SQLException e) {
+            comp = false;
+            System.out.println(e.toString());
+        }
+
+        return registros;
 
     }
 
