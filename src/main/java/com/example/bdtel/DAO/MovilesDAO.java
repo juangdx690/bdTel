@@ -114,6 +114,7 @@ public class MovilesDAO {
 
     public int obtenerMovilesconMarcaTest(Moviles m) {
 
+        int registros = 0;
         ObservableList<Moviles> datosResultadoConsulta = FXCollections.observableArrayList();
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -128,6 +129,7 @@ public class MovilesDAO {
                     +m.getPrecioSalida()+" and precioactual="+m.getPrecio();
 
             ResultSet resultadoConsulta = conexion.createStatement().executeQuery(SQL);
+            
 
             while (resultadoConsulta.next()) {
 
@@ -146,6 +148,7 @@ public class MovilesDAO {
                         resultadoConsulta.getString("Fechalanzamiento"))
 
                 );
+
 
 
             }
