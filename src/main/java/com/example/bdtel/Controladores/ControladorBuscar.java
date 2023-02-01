@@ -22,8 +22,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import net.sf.jasperreports.engine.JRException;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -102,6 +104,8 @@ public class ControladorBuscar {
 
 
     private Marcas marcasAUX;
+    @FXML
+    private Button reporte;
 
     public void initialize() {
 
@@ -422,6 +426,17 @@ Stage marca = new Stage();
 
 
 
+
+    }
+
+    @FXML
+    public void showReport(ActionEvent actionEvent) {
+        try {
+            // --- Show Jasper Report on click-----
+            new ReportClientes().showReportConSubreport();
+        } catch (ClassNotFoundException | JRException | SQLException e1) {
+            e1.printStackTrace();
+        }
 
     }
 }

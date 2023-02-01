@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="contenedor" onMouseClicked="#desTabla" prefHeight="644.0" prefWidth="840.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bdtel.Controladores.ControladorBuscar">
+<AnchorPane fx:id="contenedor" onMouseClicked="#desTabla" prefHeight="644.0" prefWidth="840.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bdtel.Controladores.ControladorBuscar">
    <children>
       <VBox fx:id="pestañaBusqueda" prefHeight="562.0" prefWidth="211.0" style="-fx-background-color: #013E88;" AnchorPane.bottomAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>
@@ -63,6 +63,7 @@
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
+            <Button fx:id="reporte" layoutX="441.0" layoutY="27.0" mnemonicParsing="false" onAction="#showReport" prefHeight="30.0" prefWidth="102.0" stylesheets="@../../../css/botonesAparte.css" text="Reporte Basico" textFill="WHITE" />
          </children></Pane>
       <Label fx:id="btnSalir" alignment="CENTER" layoutX="803.0" layoutY="14.0" onMouseClicked="#cerrarApp" prefHeight="27.0" prefWidth="22.0" stylesheets="@../../../css/estilosBTNCIerre.css" text="❌" textAlignment="CENTER" textFill="#c7c0c0" AnchorPane.rightAnchor="14.600000000000023" AnchorPane.topAnchor="5.0">
          <font>

@@ -3,6 +3,8 @@ module com.example.bdtel {
     requires javafx.fxml;
     requires org.mariadb.jdbc;
     requires java.sql;
+    requires jasperreports;
+    requires java.desktop;
 
     opens com.example.bdtel.Controladores to javafx.fxml;
     exports com.example.bdtel.Controladores;

@@ -44,11 +44,6 @@
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>mx.com.inftel.oss</groupId>
-            <artifactId>fontawesome-composables</artifactId>
-            <version>6.2.0-r2</version>
-        </dependency>
-        <dependency>
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
             <version>3.0.6</version>
@@ -98,6 +93,15 @@
             <version>2.1</version>
             <scope>test</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.18.1</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -131,12 +135,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>com.example.bdtel/com.example.bdtel.Main</mainClass>
-                            <launcher>app</launcher>
-                            <jlinkZipName>app</jlinkZipName>
-                            <jlinkImageName>app</jlinkImageName>
-                            <noManPages>true</noManPages>
-                            <stripDebug>true</stripDebug>
-                            <noHeaderFiles>true</noHeaderFiles>
+
                         </configuration>
                     </execution>
                 </executions>
