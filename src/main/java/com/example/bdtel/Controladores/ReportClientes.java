@@ -77,7 +77,8 @@ public class ReportClientes extends JFrame {
 
         HashMap<String, Object> parameters = new HashMap<String, Object>();
 
-        parameters.put("Samsung", jasperSubReport);
+        parameters.put("Subreport", jasperSubReport);
+        parameters.put("Marca", "Samsung");
 
         JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conexionBBDD);
         JRViewer viewer = new JRViewer(print);

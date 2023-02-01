@@ -4,6 +4,7 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Moviles"/>
 	<parameter name="Marca" class="java.lang.String"/>
+	<parameter name="Subreport" class="net.sf.jasperreports.engine.JasperReport"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT `Marca`
 FROM moviles.marcas
@@ -135,7 +136,7 @@ where  moviles.marcas.`Marca` =  $P{Marca} ]]>
 					<subreportParameterExpression><![CDATA[$F{Marca}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION} ]]></connectionExpression>
-				<subreportExpression><![CDATA["SubReportConTabla.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{Subreport}]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
