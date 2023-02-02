@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportBasic" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aefb2c6c-9248-4bb7-8f9b-3ddcdb1d46c7">
-	<property name="com.jaspersoft.studio.data.sql.tables">
-		<![CDATA[bW92aWxlcy50ZWxlZm9ub3MgQVMgLDEyOCwxMzAsNzM4MTlhNTgtMWU4Yy00NmJjLWE0OWItZjAw
-NTc2MGQ2NzcxOw==]]>
-	</property>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Moviles"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT *
-FROM moviles.telefonos]]>
+FROM moviles.telefonos
+ORDER BY  moviles.telefonos.`Modelo` ]]>
 	</queryString>
 	<field name="ID" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="ID"/>
@@ -78,18 +76,18 @@ FROM moviles.telefonos]]>
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="d0599264-1a00-4332-8ec0-50a45ee50d29"/>
 				<staticText>
-					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="d75c1587-ec7f-48e1-8de3-d0cb8d36c0e8"/>
+					<reportElement x="20" y="20" width="330" height="43" forecolor="#FFFFFF" uuid="d75c1587-ec7f-48e1-8de3-d0cb8d36c0e8"/>
 					<textElement>
 						<font size="34" isBold="true"/>
 					</textElement>
-					<text><![CDATA[TITLE]]></text>
+					<text><![CDATA[REPORTE BÁSICO]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="cfbf05f1-7b50-4220-83ef-7cc8b0260f00"/>
 					<textElement textAlignment="Right">
 						<font size="14" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Add a description here]]></text>
+					<text><![CDATA[DOLBAIOB MOBILE]]></text>
 				</staticText>
 			</frame>
 		</band>
