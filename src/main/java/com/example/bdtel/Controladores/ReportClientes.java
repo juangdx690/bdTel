@@ -57,7 +57,7 @@ public class ReportClientes extends JFrame {
 
     }
 
-    public void showReportConSubreport() throws JRException, ClassNotFoundException, SQLException {
+    public void showReportConSubreport(String marca) throws JRException, ClassNotFoundException, SQLException {
 
         String servidor = "jdbc:mariadb://localhost:5555/moviles?useSSL=false";
         String usuario = "root";
@@ -68,8 +68,8 @@ public class ReportClientes extends JFrame {
         conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
 
         //  Block of code to try
-        String reportSrcFile = "src/main/resources/jasperreport/InformeWithSubreport.jrxml";
-        String subReportSrcFile = "src/main/resources/jasperreport/SubReportConTabla.jrxml";
+        String reportSrcFile = "src/main/resources/jasperreport/InformeWithSubreport2.jrxml";
+        String subReportSrcFile = "src/main/resources/jasperreport/SubReportConTabla2.jrxml";
 
         // First, compile jrxml file.
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
@@ -78,7 +78,7 @@ public class ReportClientes extends JFrame {
         HashMap<String, Object> parameters = new HashMap<String, Object>();
 
         parameters.put("Subreport", jasperSubReport);
-        parameters.put("Marca", "Samsung");
+        parameters.put("Marca", marca);
 
         JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conexionBBDD);
         JRViewer viewer = new JRViewer(print);

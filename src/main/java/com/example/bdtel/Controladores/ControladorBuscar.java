@@ -106,6 +106,8 @@ public class ControladorBuscar {
     private Marcas marcasAUX;
     @FXML
     private Button reporte;
+    @FXML
+    private Button showSubreport;
 
     public void initialize() {
 
@@ -433,10 +435,36 @@ Stage marca = new Stage();
     public void showReport(ActionEvent actionEvent) {
         try {
             // --- Show Jasper Report on click-----
-            new ReportClientes().showReportConSubreport();
+            new ReportClientes().showReportSimple();
         } catch (ClassNotFoundException | JRException | SQLException e1) {
             e1.printStackTrace();
         }
+
+    }
+
+    @FXML
+    public void showSubreport(ActionEvent actionEvent) {
+
+
+        TextField textField = new TextField();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Marca");
+        alert.setHeaderText("Tipo de marca");
+        alert.setGraphic(textField);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            String enteredText = textField.getText();
+            try {
+                // --- Show Jasper Report on click-----
+                new ReportClientes().showReportConSubreport(enteredText);
+            } catch (ClassNotFoundException | JRException | SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+
 
     }
 }
