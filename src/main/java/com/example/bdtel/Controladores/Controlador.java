@@ -174,6 +174,8 @@ public class Controlador {
 
     public void initialize() {
 
+        System.out.println("a");
+
         cargarDatosTabla();
         cargarDatosComboBox();
         movilesAUX = new Moviles(0, "", "", 0, 0,
