@@ -8,7 +8,7 @@
 	<queryString language="SQL">
 		<![CDATA[SELECT `Marca`
 FROM moviles.marcas
-where  moviles.marcas.`Marca` =  $P{Marca} ]]>
+where  moviles.marcas.`Marca` =  $P{Marca}]]>
 	</queryString>
 	<field name="Marca" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="Marca"/>
@@ -31,13 +31,13 @@ where  moviles.marcas.`Marca` =  $P{Marca} ]]>
 				<imageExpression><![CDATA["C:/Users/juan/Downloads/movil.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="90" y="0" width="90" height="15" uuid="4853dbe7-5df1-40e9-8420-bb24938933c0">
+				<reportElement x="120" y="2" width="50" height="15" uuid="4853dbe7-5df1-40e9-8420-bb24938933c0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Mobile Company:]]></text>
+				<text><![CDATA[Compañía:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="120" y="30" width="50" height="15" uuid="ea108b91-9e2d-4f6e-a139-2a62f0934eea">
@@ -97,18 +97,16 @@ where  moviles.marcas.`Marca` =  $P{Marca} ]]>
 				</reportElement>
 				<text><![CDATA[958670123]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="410" y="0" width="70" height="15" uuid="d315c99a-4dde-4c90-b42b-132ddc0f055c">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$V{Fecha}]]></textFieldExpression>
-			</textField>
 			<line>
 				<reportElement x="-2" y="85" width="555" height="1" uuid="d8080cf8-7642-45ad-ab20-8ad26a27f0a8">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 			</line>
+			<textField pattern="M/d/yy h:mm a">
+				<reportElement x="413" y="2" width="100" height="13" uuid="0fc4f021-a66b-4b09-8263-956d774716c1"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
@@ -129,15 +127,24 @@ where  moviles.marcas.`Marca` =  $P{Marca} ]]>
 		<band height="13"/>
 	</columnHeader>
 	<detail>
-		<band height="74" splitType="Stretch">
+		<band height="75" splitType="Stretch">
 			<subreport>
-				<reportElement x="-20" y="20" width="545" height="40" uuid="869efae4-ae76-43e1-858e-18f395a9d182"/>
+				<reportElement x="-10" y="30" width="545" height="40" uuid="869efae4-ae76-43e1-858e-18f395a9d182"/>
 				<subreportParameter name="Marca">
 					<subreportParameterExpression><![CDATA[$F{Marca}]]></subreportParameterExpression>
 				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION} ]]></connectionExpression>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{Subreport}]]></subreportExpression>
 			</subreport>
+			<textField>
+				<reportElement x="230" y="0" width="100" height="30" uuid="3f84a6c2-8926-4a2a-a21d-2e884545be91">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ccbac40f-1b63-48de-bd0a-fcb6b5c5d0b8"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Marca}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>

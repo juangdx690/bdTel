@@ -64,8 +64,8 @@ public class Report extends JFrame {
         conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
 
         //  Block of code to try
-        String reportSrcFile = "src/main/resources/jasperreport/InformeWithSubreport2.jrxml";
-        String subReportSrcFile = "src/main/resources/jasperreport/SubReportConTabla2.jrxml";
+        String reportSrcFile = "src/main/resources/jasperreport/InformeWithSubreport.jrxml";
+        String subReportSrcFile = "src/main/resources/jasperreport/SubReportConTabla.jrxml";
 
         // First, compile jrxml file.
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);

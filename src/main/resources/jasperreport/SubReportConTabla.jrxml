@@ -108,33 +108,19 @@ where  moviles.telefonos.`Marca` =  $P{Marca}]]>
 		<property name="com.jaspersoft.studio.field.label" value="Imagen"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
 	</field>
+	<variable name="Variable_1" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<detail>
-		<band height="97" splitType="Stretch">
+	<columnHeader>
+		<band height="50">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="550" height="30" backcolor="#5E5A5A" uuid="6481530e-4796-46b4-8f54-c3df1fe10ee9">
+				<reportElement mode="Opaque" x="2" y="10" width="550" height="30" backcolor="#5E5A5A" uuid="6481530e-4796-46b4-8f54-c3df1fe10ee9">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 			</frame>
-			<frame>
-				<reportElement mode="Opaque" x="0" y="40" width="550" height="40" backcolor="#5D979E" uuid="0924c1c7-c395-49f7-9aa4-5133b629f983">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-			</frame>
-			<textField>
-				<reportElement mode="Transparent" x="0" y="40" width="80" height="40" uuid="7bf7d494-d84b-4f92-a7e2-d137ecae5f22">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="0" width="80" height="30" uuid="077b9537-a182-4c0f-877e-1b7290dcfbdd">
+				<reportElement mode="Transparent" x="0" y="10" width="80" height="30" uuid="077b9537-a182-4c0f-877e-1b7290dcfbdd">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -143,75 +129,38 @@ where  moviles.telefonos.`Marca` =  $P{Marca}]]>
 				</textElement>
 				<text><![CDATA[ID]]></text>
 			</staticText>
-			<textField>
-				<reportElement mode="Transparent" x="80" y="40" width="100" height="42" uuid="187a39e0-7c4d-4727-8d0b-81cbfb189097"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{Modelo}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="80" y="0" width="100" height="30" uuid="088f8ffb-4f67-4761-9ce9-ae57b9f7614b"/>
+				<reportElement mode="Transparent" x="80" y="10" width="130" height="30" uuid="088f8ffb-4f67-4761-9ce9-ae57b9f7614b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Modelo]]></text>
 			</staticText>
-			<textField>
-				<reportElement mode="Transparent" x="180" y="40" width="100" height="40" uuid="56949e1b-75b9-4da2-bd08-67caf694e87b"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{Almacenamiento}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="180" y="0" width="100" height="30" uuid="467e9e8e-40c9-4854-82c1-5c5a4c8b603b">
+				<reportElement mode="Transparent" x="210" y="10" width="70" height="30" uuid="467e9e8e-40c9-4854-82c1-5c5a4c8b603b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Almacenamiento]]></text>
+				<text><![CDATA[Memoria]]></text>
 			</staticText>
-			<textField>
-				<reportElement mode="Transparent" x="280" y="40" width="100" height="40" uuid="d3e6c89b-b2b7-4c3f-96fa-a24cd88c4e43"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{RAM}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="280" y="0" width="100" height="30" uuid="6bc6d5e8-1872-45fb-9b7c-038cb76f2218"/>
+				<reportElement mode="Transparent" x="280" y="10" width="100" height="30" uuid="6bc6d5e8-1872-45fb-9b7c-038cb76f2218"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[RAM]]></text>
 			</staticText>
-			<textField>
-				<reportElement mode="Transparent" x="380" y="40" width="100" height="40" uuid="8ee38ccc-c884-4ddb-8f23-f45739c0596d"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{Sistemaoperativo}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="380" y="0" width="100" height="30" uuid="5d1274c5-b9fe-4e82-ad9b-47ee023f80e0"/>
+				<reportElement mode="Transparent" x="380" y="10" width="100" height="30" uuid="5d1274c5-b9fe-4e82-ad9b-47ee023f80e0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[CPU]]></text>
+				<text><![CDATA[Sistema Operativo]]></text>
 			</staticText>
-			<textField>
-				<reportElement mode="Transparent" x="480" y="40" width="70" height="42" uuid="1798941f-4a0c-4e65-a4f0-36656e899727">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{Procesador}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="480" y="0" width="70" height="30" uuid="aebc8629-31f8-46c8-b8d2-a8ce70394077">
+				<reportElement mode="Transparent" x="480" y="10" width="70" height="30" uuid="aebc8629-31f8-46c8-b8d2-a8ce70394077">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -220,5 +169,95 @@ where  moviles.telefonos.`Marca` =  $P{Marca}]]>
 				<text><![CDATA[Procesador]]></text>
 			</staticText>
 		</band>
+	</columnHeader>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="550" height="40" backcolor="#5D979E" uuid="0924c1c7-c395-49f7-9aa4-5133b629f983">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+				</reportElement>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="550" height="40" backcolor="#6D2BFC" uuid="ba2ca4d5-7b99-4d1e-abfb-58f3e34eb493">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 1]]></printWhenExpression>
+				</reportElement>
+			</frame>
+			<textField>
+				<reportElement mode="Transparent" x="2" y="0" width="80" height="40" forecolor="#FFFFFF" uuid="7bf7d494-d84b-4f92-a7e2-d137ecae5f22">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="82" y="0" width="128" height="42" forecolor="#FFFFFF" uuid="187a39e0-7c4d-4727-8d0b-81cbfb189097">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Modelo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="210" y="0" width="72" height="40" forecolor="#FFFFFF" uuid="56949e1b-75b9-4da2-bd08-67caf694e87b">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Almacenamiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="282" y="0" width="100" height="40" forecolor="#FFFFFF" uuid="d3e6c89b-b2b7-4c3f-96fa-a24cd88c4e43">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RAM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="382" y="0" width="100" height="40" forecolor="#FFFFFF" uuid="8ee38ccc-c884-4ddb-8f23-f45739c0596d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Sistemaoperativo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="482" y="0" width="70" height="40" forecolor="#FFFFFF" uuid="1798941f-4a0c-4e65-a4f0-36656e899727">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Procesador}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
+	<columnFooter>
+		<band height="50">
+			<textField>
+				<reportElement x="450" y="10" width="100" height="30" uuid="70f89116-62e4-45a4-84fa-d84ed94e8d95"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="260" y="10" width="180" height="30" uuid="e445308b-afda-447c-b520-839b142a1df5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número total de móviles:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
 </jasperReport>
