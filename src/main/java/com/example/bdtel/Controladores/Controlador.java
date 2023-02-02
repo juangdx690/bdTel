@@ -174,7 +174,7 @@ public class Controlador {
 
     public void initialize() {
 
-        System.out.println("a");
+
 
         cargarDatosTabla();
         cargarDatosComboBox();
