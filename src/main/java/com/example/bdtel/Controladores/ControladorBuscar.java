@@ -14,6 +14,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -102,7 +103,6 @@ public class ControladorBuscar {
     private Executor exec;
 
 
-
     private Marcas marcasAUX;
     @FXML
     private Button reporte;
@@ -133,8 +133,6 @@ public class ControladorBuscar {
         colPrecioS.setCellValueFactory(new PropertyValueFactory<Moviles, String>("precioSalida"));
         colPrecioA.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Precio"));
         colFecha.setCellValueFactory(new PropertyValueFactory<Moviles, String>("Fecha"));
-
-
 
 
     }
@@ -421,12 +419,10 @@ public class ControladorBuscar {
     @FXML
     public void abrirPaginaMarcas(Event event) {
 
-Stage marca = new Stage();
+        Stage marca = new Stage();
         VentanaMarcas vtnMarcas = new VentanaMarcas();
 
         vtnMarcas.start(marca);
-
-
 
 
     }
@@ -435,7 +431,7 @@ Stage marca = new Stage();
     public void showReport(ActionEvent actionEvent) {
         try {
             // --- Show Jasper Report on click-----
-            new ReportClientes().showReportSimple();
+            new Report().showReportSimple();
         } catch (ClassNotFoundException | JRException | SQLException e1) {
             e1.printStackTrace();
         }
@@ -448,22 +444,27 @@ Stage marca = new Stage();
 
         TextField textField = new TextField();
 
+        Label label = new Label("Escribe la marca para el subreporte");
+
+        HBox hbox = new HBox(label, textField);
+        hbox.setSpacing(10);
+        hbox.setAlignment(Pos.CENTER);
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Marca");
-        alert.setHeaderText("Tipo de marca");
-        alert.setGraphic(textField);
+        alert.setHeaderText(null);
+        alert.setGraphic(hbox);
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             String enteredText = textField.getText();
             try {
                 // --- Show Jasper Report on click-----
-                new ReportClientes().showReportConSubreport(enteredText);
+                new Report().showReportConSubreport(enteredText);
             } catch (ClassNotFoundException | JRException | SQLException e1) {
                 e1.printStackTrace();
             }
         }
-
 
 
     }

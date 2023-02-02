@@ -6,22 +6,18 @@ package com.example.bdtel.Controladores;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.swing.JRViewer;
 
-public class ReportClientes extends JFrame {
+public class Report extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
