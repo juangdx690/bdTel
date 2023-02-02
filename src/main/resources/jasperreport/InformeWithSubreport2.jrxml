@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InformeWithSubreport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc2042ee-c7cc-482d-89b0-149a14dd0c47">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Moviles"/>
+	<parameter name="Marca" class="java.lang.String"/>
+	<parameter name="Subreport" class="net.sf.jasperreports.engine.JasperReport"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT `Marca`
+FROM moviles.marcas
+where  moviles.marcas.`Marca` =  $P{Marca}]]>
+	</queryString>
+	<field name="Marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="Marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="marcas"/>
+	</field>
+	<variable name="Fecha" class="java.util.Date">
+		<variableExpression><![CDATA[new java.util.Date()]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="10" width="80" height="70" uuid="2264c8b4-2798-414f-9858-1caf498b256e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["C:/Users/juan/Downloads/movil.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="120" y="2" width="50" height="15" uuid="4853dbe7-5df1-40e9-8420-bb24938933c0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Compañía:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="30" width="50" height="15" uuid="ea108b91-9e2d-4f6e-a139-2a62f0934eea">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="65" width="100" height="15" uuid="6f7ce243-96db-4491-85f6-0fdcdd890c4f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo Electrónico:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="38" width="50" height="15" uuid="824382ac-09fb-440f-b1ab-a2121ded5e24">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="0" width="82" height="30" uuid="765fcdbb-dd1a-4ed1-bedb-00444e72b52f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y hora del informe:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="0" width="100" height="15" uuid="7a4234c8-1d2a-4260-9385-55afad64f6b8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[DOLBAIOB MOBILE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="22" width="90" height="30" uuid="fdb496da-4ac0-4f2a-a85e-0ff9f11a5e0d"/>
+				<text><![CDATA[Calle dolbaiob, n15, Granada 18500]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="65" width="130" height="15" uuid="cc39ca33-f87f-4156-bfd7-06eecfcc1ca5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[juanbeasguadix@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="38" width="55" height="15" uuid="872cef1a-2ae7-432f-a350-1d7d8253a297">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[958670123]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-2" y="85" width="555" height="1" uuid="d8080cf8-7642-45ad-ab20-8ad26a27f0a8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+			</line>
+			<textField pattern="M/d/yy h:mm a">
+				<reportElement x="413" y="2" width="100" height="13" uuid="0fc4f021-a66b-4b09-8263-956d774716c1"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="560" height="30" forecolor="#FFFFFF" backcolor="#4D638C" uuid="f3519630-eb79-40a0-b477-51425792ae79">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE TELEFONOS POR MARCA - DOLBAIOB MOBILE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="13"/>
+	</columnHeader>
+	<detail>
+		<band height="75" splitType="Stretch">
+			<subreport>
+				<reportElement x="-10" y="30" width="545" height="40" uuid="869efae4-ae76-43e1-858e-18f395a9d182"/>
+				<subreportParameter name="Marca">
+					<subreportParameterExpression><![CDATA[$F{Marca}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{Subreport}]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="230" y="0" width="100" height="30" uuid="3f84a6c2-8926-4a2a-a21d-2e884545be91">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ccbac40f-1b63-48de-bd0a-fcb6b5c5d0b8"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Marca}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="40" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="10" width="445" height="30" uuid="b54220c5-20c6-4e7d-8f43-ae800c46a351"/>
+				<text><![CDATA[Representación: empresa de reportes de productos de la tienda online Dolbaiob Mobile. Para más información en la página: http://www.dolbaiocompany.com]]></text>
+			</staticText>
+			<image>
+				<reportElement x="513" y="10" width="40" height="30" uuid="bd9fe32f-57d6-441c-af8b-737889a56659">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["C:/Users/juan/Downloads/movil.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>
