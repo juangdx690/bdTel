@@ -45,7 +45,7 @@
 	<queryString language="SQL">
 		<![CDATA[SELECT *
 FROM moviles.telefonos
-order by  moviles.telefonos.`Modelo` ]]>
+order by  moviles.telefonos.`Modelo`]]>
 	</queryString>
 	<field name="ID" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="ID"/>
@@ -211,7 +211,7 @@ order by  moviles.telefonos.`Modelo` ]]>
 	<columnHeader>
 		<band height="50">
 			<frame>
-				<reportElement mode="Opaque" x="2" y="10" width="550" height="30" backcolor="#5E5A5A" uuid="6481530e-4796-46b4-8f54-c3df1fe10ee9">
+				<reportElement mode="Opaque" x="2" y="10" width="550" height="30" backcolor="#B3F7FF" uuid="6481530e-4796-46b4-8f54-c3df1fe10ee9">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 			</frame>
@@ -340,22 +340,6 @@ order by  moviles.telefonos.`Modelo` ]]>
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="50">
-			<textField>
-				<reportElement x="450" y="10" width="100" height="30" uuid="70f89116-62e4-45a4-84fa-d84ed94e8d95"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="260" y="10" width="180" height="30" uuid="e445308b-afda-447c-b520-839b142a1df5"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Número total de móviles:]]></text>
-			</staticText>
-		</band>
-	</columnFooter>
 	<pageFooter>
 		<band height="50">
 			<staticText>
@@ -369,6 +353,29 @@ order by  moviles.telefonos.`Modelo` ]]>
 				</reportElement>
 				<imageExpression><![CDATA["C:/Users/juan/Downloads/movil.jpg"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement x="490" y="10" width="29" height="30" uuid="e67a98dd-4afb-4a7e-afea-0824bfb4b1e1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
+	<summary>
+		<band height="50">
+			<textField>
+				<reportElement x="460" y="10" width="100" height="30" uuid="70f89116-62e4-45a4-84fa-d84ed94e8d95"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="270" y="10" width="180" height="30" uuid="e445308b-afda-447c-b520-839b142a1df5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número total de móviles:]]></text>
+			</staticText>
+		</band>
+	</summary>
 </jasperReport>

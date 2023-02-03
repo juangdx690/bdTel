@@ -115,7 +115,7 @@ where  moviles.telefonos.`Marca` =  $P{Marca}]]>
 	<columnHeader>
 		<band height="50">
 			<frame>
-				<reportElement mode="Opaque" x="2" y="10" width="550" height="30" backcolor="#5E5A5A" uuid="6481530e-4796-46b4-8f54-c3df1fe10ee9">
+				<reportElement mode="Opaque" x="2" y="10" width="550" height="30" backcolor="#9CE3FF" uuid="6481530e-4796-46b4-8f54-c3df1fe10ee9">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 			</frame>
