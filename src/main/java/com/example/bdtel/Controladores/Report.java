@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -32,7 +32,7 @@ public class Report extends JFrame {
         conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
 
         //  Block of code to try
-        String reportSrcFile = "src/main/resources/jasperreport/ReportBasic.jrxml";
+        String reportSrcFile = "src/main/resources/jasperreport/ReporteBasico.jrxml";
 
         // First, compile jrxml file.
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
@@ -43,13 +43,16 @@ public class Report extends JFrame {
 
 
         JasperPrint print = JasperFillManager.fillReport(jasperReport, null, conexionBBDD);
-        JRViewer viewer = new JRViewer(print);
-        viewer.setOpaque(true);
-        viewer.setVisible(true);
-        this.add(viewer);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setVisible(true);
-        System.out.print("Done!");
+        if (print.getPages().size() > 0) {
+            JRViewer viewer = new JRViewer(print);
+            viewer.setOpaque(true);
+            viewer.setVisible(true);
+            this.add(viewer);
+            this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            this.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontraron resultados para el informe.");
+        }
 
     }
 
@@ -77,13 +80,16 @@ public class Report extends JFrame {
         parameters.put("Marca", marca);
 
         JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conexionBBDD);
-        JRViewer viewer = new JRViewer(print);
-        viewer.setOpaque(true);
-        viewer.setVisible(true);
-        this.add(viewer);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setVisible(true);
-        System.out.print("Done!");
+        if (print.getPages().size() > 0) {
+            JRViewer viewer = new JRViewer(print);
+            viewer.setOpaque(true);
+            viewer.setVisible(true);
+            this.add(viewer);
+            this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            this.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontraron resultados para el informe.");
+        }
 
     }
 

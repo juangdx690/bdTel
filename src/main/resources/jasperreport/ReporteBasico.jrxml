@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubReportConTabla" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="23f59ee9-7a94-45f0-9c4d-fec7a63e7e74">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Moviles"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Tabla" uuid="256b5263-8c1f-4688-b407-fc8935029763">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="id" class="java.lang.Integer"/>
+		<field name="modelo" class="java.lang.String"/>
+		<field name="almacenamiento" class="java.lang.Integer"/>
+		<field name="ram" class="java.lang.Integer"/>
+		<field name="sistemaOperativo" class="java.lang.String"/>
+		<field name="cpu" class="java.lang.String"/>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM moviles.telefonos
+order by  moviles.telefonos.`Modelo` ]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
+	</field>
+	<field name="Modelo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Modelo"/>
+		<property name="com.jaspersoft.studio.field.label" value="Modelo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
+	</field>
+	<field name="Marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="Marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
+	</field>
+	<field name="Almacenamiento" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Almacenamiento"/>
+		<property name="com.jaspersoft.studio.field.label" value="Almacenamiento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
+	</field>
+	<field name="RAM" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="RAM"/>
+		<property name="com.jaspersoft.studio.field.label" value="RAM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
+	</field>
+	<field name="Sistemaoperativo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Sistemaoperativo"/>
+		<property name="com.jaspersoft.studio.field.label" value="Sistemaoperativo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
+	</field>
+	<field name="Procesador" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Procesador"/>
+		<property name="com.jaspersoft.studio.field.label" value="Procesador"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
+	</field>
+	<field name="Bateria" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Bateria"/>
+		<property name="com.jaspersoft.studio.field.label" value="Bateria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
+	</field>
+	<field name="Preciosalida" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Preciosalida"/>
+		<property name="com.jaspersoft.studio.field.label" value="Preciosalida"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
+	</field>
+	<field name="Precioactual" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="Precioactual"/>
+		<property name="com.jaspersoft.studio.field.label" value="Precioactual"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
+	</field>
+	<field name="Fechalanzamiento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="Fechalanzamiento"/>
+		<property name="com.jaspersoft.studio.field.label" value="Fechalanzamiento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
+	</field>
+	<field name="Imagen" class="byte[]">
+		<property name="com.jaspersoft.studio.field.name" value="Imagen"/>
+		<property name="com.jaspersoft.studio.field.label" value="Imagen"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefonos"/>
+	</field>
+	<variable name="Variable_1" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image>
+				<reportElement x="0" y="10" width="80" height="70" uuid="8988a465-f4ed-4dbc-a986-6588128fe17b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["C:/Users/juan/Downloads/movil.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="120" y="2" width="50" height="15" uuid="ef9669ad-07e3-4482-bbaf-57294102bc92">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Compañía:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="30" width="50" height="15" uuid="20d29f81-352c-4e49-bffa-1f736904d4f4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="65" width="100" height="15" uuid="ed7656e1-05d0-4dd9-8489-7e5f3812ebf1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo Electrónico:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="38" width="50" height="15" uuid="a5a9ab20-dc01-4890-8d26-48c5f2f83149">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="0" width="82" height="30" uuid="77b1f415-4e2e-472d-be5b-229bafd08d68">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha y hora del informe:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="0" width="100" height="15" uuid="633d8490-7639-4e4b-b318-87f09afaaf5b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[DOLBAIOB MOBILE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="22" width="90" height="30" uuid="9f1a649a-eb5a-420e-b91e-244b1fcc9e1c"/>
+				<text><![CDATA[Calle dolbaiob, n15, Granada 18500]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="65" width="130" height="15" uuid="9e2f37b5-65f0-4f89-9776-979dab404be7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[juanbeasguadix@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="38" width="55" height="15" uuid="edece43e-e1a9-475a-94b4-21c65ac363e1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[958670123]]></text>
+			</staticText>
+			<textField pattern="M/d/yy h:mm a">
+				<reportElement x="413" y="2" width="100" height="13" uuid="a35bb54e-e49b-4933-b59e-7f1f5258f14f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="560" height="30" forecolor="#FFFFFF" backcolor="#4D638C" uuid="8cb74e81-fa1d-46ce-9cc3-b7eb498fe725">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE TOTAL DE TELEFONOS - DOLBAIOB MOBILE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="10" width="550" height="30" backcolor="#5E5A5A" uuid="6481530e-4796-46b4-8f54-c3df1fe10ee9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</frame>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="10" width="80" height="30" uuid="077b9537-a182-4c0f-877e-1b7290dcfbdd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="80" y="10" width="130" height="30" uuid="088f8ffb-4f67-4761-9ce9-ae57b9f7614b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="210" y="10" width="70" height="30" uuid="467e9e8e-40c9-4854-82c1-5c5a4c8b603b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Memoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="280" y="10" width="100" height="30" uuid="6bc6d5e8-1872-45fb-9b7c-038cb76f2218"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RAM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="380" y="10" width="100" height="30" uuid="5d1274c5-b9fe-4e82-ad9b-47ee023f80e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema Operativo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="480" y="10" width="70" height="30" uuid="aebc8629-31f8-46c8-b8d2-a8ce70394077">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Procesador]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="550" height="40" backcolor="#5D979E" uuid="0924c1c7-c395-49f7-9aa4-5133b629f983">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+				</reportElement>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="550" height="40" backcolor="#6D2BFC" uuid="ba2ca4d5-7b99-4d1e-abfb-58f3e34eb493">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 1]]></printWhenExpression>
+				</reportElement>
+			</frame>
+			<textField>
+				<reportElement mode="Transparent" x="2" y="0" width="80" height="40" forecolor="#FFFFFF" uuid="7bf7d494-d84b-4f92-a7e2-d137ecae5f22">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="82" y="0" width="128" height="42" forecolor="#FFFFFF" uuid="187a39e0-7c4d-4727-8d0b-81cbfb189097">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Modelo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="210" y="0" width="72" height="40" forecolor="#FFFFFF" uuid="56949e1b-75b9-4da2-bd08-67caf694e87b">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Almacenamiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="282" y="0" width="100" height="40" forecolor="#FFFFFF" uuid="d3e6c89b-b2b7-4c3f-96fa-a24cd88c4e43">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RAM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="382" y="0" width="100" height="40" forecolor="#FFFFFF" uuid="8ee38ccc-c884-4ddb-8f23-f45739c0596d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Sistemaoperativo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="482" y="0" width="70" height="40" forecolor="#FFFFFF" uuid="1798941f-4a0c-4e65-a4f0-36656e899727">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Procesador}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50">
+			<textField>
+				<reportElement x="450" y="10" width="100" height="30" uuid="70f89116-62e4-45a4-84fa-d84ed94e8d95"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="260" y="10" width="180" height="30" uuid="e445308b-afda-447c-b520-839b142a1df5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número total de móviles:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="50">
+			<staticText>
+				<reportElement x="0" y="10" width="445" height="30" uuid="939cebd1-4e45-4a33-b61c-859657f46d3f"/>
+				<text><![CDATA[Representación: empresa de reportes de productos de la tienda online Dolbaiob Mobile. Para más información en la página: http://www.dolbaiocompany.com]]></text>
+			</staticText>
+			<image>
+				<reportElement x="513" y="10" width="40" height="30" uuid="1e41f4b3-f378-4147-af90-befaa64db4eb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["C:/Users/juan/Downloads/movil.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>
